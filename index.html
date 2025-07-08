@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALEYNA WEDDING</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: black;
+      color: white;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('anh1.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 4em;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      animation: fadeInText 2s ease-out;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1em;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid white;
+      color: white;
+      cursor: pointer;
+      backdrop-filter: blur(3px);
+      transition: all 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .info-section {
+      background-color: #111;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .info-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .info-section p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero" id="hero">
+    <h1>ALEYNA WEDDING</h1>
+    <button onclick="redirect()">XEM TIẾP</button>
+  </div>
+
+  <div class="info-section">
+    <h2>DÀNH CHO KHOẢNH KHẮC TRỌNG ĐẠI</h2>
+    <p>
+  Aleyna Wedding chuyên cung cấp dịch vụ <strong>cho thuê áo dài đồng phục bê tráp</strong> cho lễ ăn hỏi, lễ cưới.  
+  Với nhiều mẫu mã được chọn lọc kỹ lưỡng, thiết kế đồng bộ, màu sắc thanh lịch – chúng tôi giúp đội hình bê quả của bạn trở nên nổi bật, sang trọng và đầy ý nghĩa trong ngày trọng đại.
+  <br><br>
+  Dù là tone đỏ truyền thống hay pastel nhẹ nhàng hiện đại, Aleyna luôn sẵn sàng tư vấn và hỗ trợ bạn chọn được mẫu áo dài phù hợp nhất.  
+  <strong>Sạch sẽ – chỉn chu – đúng hẹn</strong> là cam kết của chúng tôi trong từng đơn hàng.
+</p>
+
+  </div>
+
+  <script>
+    function redirect() {
+      window.location.href = "https://www.facebook.com/profile.php?id=61577575435565"; // Thay bằng link thật
+    }
+
+    // Ảnh nền luân phiên
+    const hero = document.getElementById("hero");
+    const images = ["anh1.jpg", "anh2.jpg", "anh3.jpg"]; // Đổi tên ảnh theo bạn
+    let index = 0;
+
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      hero.style.backgroundImage = `url('${images[index]}')`;
+    }, 5000); // Thay đổi mỗi 5 giây
+  </script>
+</body>
+</html>
