@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- SEO Cơ bản -->
+<meta name="description" content="Aleyna Wedding chuyên cho thuê áo dài bê tráp, áo dài đồng phục lễ ăn hỏi cưới. Chất lượng - đúng hẹn - giá tốt. Hotline: 0389 446 132">
+<meta name="keywords" content="áo dài bê tráp, thuê áo dài cưới, thuê nhân sự bê quả, áo dài ăn hỏi, aleyna wedding">
+<meta name="author" content="Aleyna Wedding">
+<meta property="og:title" content="Aleyna Wedding - Thuê áo dài bê tráp đẹp, chỉn chu">
+<meta property="og:description" content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
+<meta property="og:image" content="anh1.jpg"> <!-- nên là ảnh đẹp -->
+<meta property="og:url" content="https://aleynawedding.store/">
+<meta name="robots" content="index, follow">
   <title>ALEYNA WEDDING</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
@@ -16,6 +25,7 @@
       font-family: 'Playfair Display', serif;
       background-color: black;
       color: white;
+      scroll-behavior: smooth;
     }
 
     .hero {
@@ -35,9 +45,8 @@
       letter-spacing: 5px;
       text-transform: uppercase;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      animation: fadeInText 2s ease-out;
+      animation: fadeInText 2s ease-out forwards;
       opacity: 0;
-      animation-fill-mode: forwards;
     }
 
     .hero button {
@@ -57,23 +66,42 @@
       color: black;
     }
 
-    .info-section {
-      background-color: #111;
-      padding: 60px 20px;
+    section {
+      padding: 80px 20px;
       text-align: center;
     }
 
-    .info-section h2 {
+    .section-dark {
+      background-color: #111;
+    }
+
+    h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
     }
 
-    .info-section p {
-      max-width: 600px;
+    p {
+      max-width: 700px;
       margin: 0 auto;
       font-size: 1.2em;
       line-height: 1.6;
       color: #ccc;
+    }
+
+    .btn-contact {
+      margin-top: 40px;
+      padding: 14px 40px;
+      font-size: 1.1em;
+      border: none;
+      background-color: white;
+      color: black;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-contact:hover {
+      background-color: #f0c5d6;
+      color: black;
     }
 
     @keyframes fadeInText {
@@ -86,41 +114,79 @@
         transform: translateY(0);
       }
     }
+
+    @media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5em;
+    letter-spacing: 2px;
+  }
+
+  .hero button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1em;
+    padding: 0 10px;
+  }
+
+  section {
+    padding: 50px 10px;
+  }
+
+  .btn-contact {
+    padding: 12px 28px;
+    font-size: 1em;
+  }
+}
   </style>
 </head>
 <body>
 
+  <!-- Phần 1: Hero -->
   <div class="hero" id="hero">
     <h1>ALEYNA WEDDING</h1>
-    <button onclick="redirect()">XEM TIẾP</button>
+    <button onclick="document.getElementById('section-moment').scrollIntoView({ behavior: 'smooth' });">XEM TIẾP</button>
   </div>
 
-  <div class="info-section">
+  <!-- Phần 2: Khoảnh khắc -->
+  <section class="section-dark" id="section-moment">
     <h2>DÀNH CHO KHOẢNH KHẮC TRỌNG ĐẠI</h2>
     <p>
-  Aleyna Wedding chuyên cung cấp dịch vụ <strong>cho thuê áo dài đồng phục bê tráp</strong> cho lễ ăn hỏi, lễ cưới.  
-  Với nhiều mẫu mã được chọn lọc kỹ lưỡng, thiết kế đồng bộ, màu sắc thanh lịch – chúng tôi giúp đội hình bê quả của bạn trở nên nổi bật, sang trọng và đầy ý nghĩa trong ngày trọng đại.
-  <br><br>
-  Dù là tone đỏ truyền thống hay pastel nhẹ nhàng hiện đại, Aleyna luôn sẵn sàng tư vấn và hỗ trợ bạn chọn được mẫu áo dài phù hợp nhất.  
-  <strong>Sạch sẽ – chỉn chu – đúng hẹn</strong> là cam kết của chúng tôi trong từng đơn hàng.
-</p>
+      Aleyna Wedding đồng hành cùng bạn lưu giữ dấu ấn đẹp nhất trong ngày trọng đại. Chúng tôi tin rằng những chi tiết nhỏ — từ trang phục đến sự chuẩn bị — chính là điều tạo nên những khoảnh khắc không thể nào quên.
+    </p>
+  </section>
 
-  </div>
+  <!-- Phần 3: Dịch vụ -->
+  <section id="section-service">
+    <h2>DỊCH VỤ ÁO DÀI BÊ TRÁP</h2>
+    <p>
+      🎀 <strong>Áo dài bưng quả:</strong> chỉ từ <strong>90.000đ/bộ</strong> (đã bao gồm phụ kiện)<br><br>
+      🎀 <strong>Nhân sự bê quả:</strong> chỉ từ <strong>1xx.000đ/bạn</strong> (bao gồm áo dài, makeup, di chuyển)<br><br>
+      Aleyna Wedding chuyên cung cấp dịch vụ <strong>cho thuê áo dài đồng phục bê tráp</strong> cho lễ ăn hỏi, lễ cưới. Với nhiều mẫu mã thanh lịch – hiện đại, đội hình bê quả của bạn sẽ nổi bật và đồng bộ.<br><br>
+      <strong>Sạch sẽ – chỉn chu – đúng hẹn</strong> là cam kết của chúng tôi trong từng đơn hàng.<br><br>
+      📩 Inbox ngay cho <strong>#aleynawedding</strong> để được tư vấn & hỗ trợ kịp thời<br>
+      📍 Địa chỉ: Đường D11, P. Tây Thạnh, Q. Tân Phú<br>
+      📞 Hotline: <strong>0389 446 132 (Zalo)</strong><br>
+      (Vui lòng gọi trước 30 phút khi đến để shop chuẩn bị chu đáo)
+    </p>
+    <button class="btn-contact" onclick="window.location.href='https://www.facebook.com/profile.php?id=61577575435565'">LIÊN HỆ NGAY</button>
+  </section>
 
   <script>
-    function redirect() {
-      window.location.href = "https://www.facebook.com/profile.php?id=61577575435565"; // Thay bằng link thật
-    }
-
-    // Ảnh nền luân phiên
     const hero = document.getElementById("hero");
-    const images = ["anh1.jpg", "anh2.jpg", "anh3.jpg"]; // Đổi tên ảnh theo bạn
+    const images = ["anh1.jpg", "anh2.jpg", "anh3.jpg"];
     let index = 0;
 
     setInterval(() => {
       index = (index + 1) % images.length;
       hero.style.backgroundImage = `url('${images[index]}')`;
-    }, 5000); // Thay đổi mỗi 5 giây
+    }, 5000);
   </script>
 </body>
 </html>
