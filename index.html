@@ -3,17 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- SEO Cơ bản -->
-<meta name="description" content="Aleyna Wedding chuyên cho thuê áo dài bê tráp, áo dài đồng phục lễ ăn hỏi cưới. Chất lượng - đúng hẹn - giá tốt. Hotline: 0389 446 132">
-<meta name="keywords" content="áo dài bê tráp, thuê áo dài cưới, thuê nhân sự bê quả, áo dài ăn hỏi, aleyna wedding">
-<meta name="author" content="Aleyna Wedding">
-<meta property="og:title" content="Aleyna Wedding - Thuê áo dài bê tráp đẹp, chỉn chu">
-<meta property="og:description" content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
-<meta property="og:image" content="anh1.jpg"> <!-- nên là ảnh đẹp -->
-<meta property="og:url" content="https://aleynawedding.store/">
-<meta name="robots" content="index, follow">
   <title>ALEYNA WEDDING</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F90BW8CMZY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F90BW8CMZY');
+</script>
+  <!-- SEO Cơ bản -->
+  <meta name="description" content="Aleyna Wedding chuyên cho thuê áo dài bê tráp, áo dài đồng phục lễ ăn hỏi cưới. Chất lượng - đúng hẹn - giá tốt. Hotline: 0389 446 132">
+  <meta name="keywords" content="áo dài bê tráp, thuê áo dài cưới, thuê nhân sự bê quả, áo dài ăn hỏi, aleyna wedding">
+  <meta name="author" content="Aleyna Wedding">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://aleynawedding.store/">
+
+  <!-- Mạng xã hội -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aleyna Wedding - Thuê áo dài bê tráp đẹp, chỉn chu">
+  <meta property="og:description" content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
+  <meta property="og:image" content="https://aleynawedding.store/anh1.jpg">
+  <meta property="og:url" content="https://aleynawedding.store/">
+  <meta property="og:site_name" content="Aleyna Wedding">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aleyna Wedding - Thuê áo dài bê tráp đẹp, chỉn chu">
+  <meta name="twitter:description" content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
+  <meta name="twitter:image" content="https://aleynawedding.store/anh1.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Aleyna Wedding",
+  "description": "Cho thuê áo dài bê tráp và nhân sự cưới hỏi tại Tân Phú",
+  "url": "https://aleynawedding.store",
+  "telephone": "0389446132",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Đường D11, P. Tây Thạnh",
+    "addressLocality": "Tân Phú",
+    "addressRegion": "HCM",
+    "postalCode": "700000",
+    "addressCountry": "VN"
+  }
+}
+</script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <!-- CSS nội bộ -->
   <style>
     * {
       margin: 0;
@@ -95,13 +144,28 @@
       border: none;
       background-color: white;
       color: black;
-      cursor: pointer;
+      cursor: pointer
       transition: all 0.3s ease;
     }
 
     .btn-contact:hover {
       background-color: #f0c5d6;
       color: black;
+    }
+
+    /* Nút gọi điện nhanh */
+    .call-now {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #f0c5d6;
+      padding: 12px 20px;
+      color: black;
+      border-radius: 40px;
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     @keyframes fadeInText {
@@ -116,45 +180,45 @@
     }
 
     @media screen and (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5em;
-    letter-spacing: 2px;
-  }
+      .hero h1 {
+        font-size: 2.5em;
+        letter-spacing: 2px;
+      }
 
-  .hero button {
-    padding: 10px 20px;
-    font-size: 0.9em;
-  }
+      .hero button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
 
-  h2 {
-    font-size: 1.8em;
-  }
+      h2 {
+        font-size: 1.8em;
+      }
 
-  p {
-    font-size: 1em;
-    padding: 0 10px;
-  }
+      p {
+        font-size: 1em;
+        padding: 0 10px;
+      }
 
-  section {
-    padding: 50px 10px;
-  }
+      section {
+        padding: 50px 10px;
+      }
 
-  .btn-contact {
-    padding: 12px 28px;
-    font-size: 1em;
-  }
-}
+      .btn-contact {
+        padding: 12px 28px;
+        font-size: 1em;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Phần 1: Hero -->
+  <!-- Hero -->
   <div class="hero" id="hero">
     <h1>ALEYNA WEDDING</h1>
-    <button onclick="document.getElementById('section-moment').scrollIntoView({ behavior: 'smooth' });">XEM TIẾP</button>
+    <button aria-label="Xem tiếp" onclick="document.getElementById('section-moment').scrollIntoView({ behavior: 'smooth' });">XEM TIẾP</button>
   </div>
 
-  <!-- Phần 2: Khoảnh khắc -->
+  <!-- Khoảnh khắc -->
   <section class="section-dark" id="section-moment">
     <h2>DÀNH CHO KHOẢNH KHẮC TRỌNG ĐẠI</h2>
     <p>
@@ -162,7 +226,7 @@
     </p>
   </section>
 
-  <!-- Phần 3: Dịch vụ -->
+  <!-- Dịch vụ -->
   <section id="section-service">
     <h2>DỊCH VỤ ÁO DÀI BÊ TRÁP</h2>
     <p>
@@ -178,10 +242,20 @@
     <button class="btn-contact" onclick="window.location.href='https://www.facebook.com/profile.php?id=61577575435565'">LIÊN HỆ NGAY</button>
   </section>
 
+  <!-- Nút gọi điện nhanh -->
+  <a href="tel:0389446132" class="call-now">📞 Gọi ngay</a>
+
+  <!-- JavaScript -->
   <script>
     const hero = document.getElementById("hero");
     const images = ["anh1.jpg", "anh2.jpg", "anh3.jpg"];
     let index = 0;
+
+    // Preload ảnh nền
+    images.forEach(img => {
+      const preload = new Image();
+      preload.src = img;
+    });
 
     setInterval(() => {
       index = (index + 1) % images.length;
