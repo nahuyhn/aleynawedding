@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Vòng quay may mắn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f5f5f5;
+    }
+    .lucky-wheel-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .lucky-wheel-container {
+      text-align: center;
+      position: relative;
+    }
+
+    .lucky-wheel-pointer {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 30px solid red;
+      z-index: 100;
+    }
+
+    .lucky-wheel {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 10px solid #333;
+      overflow: hidden;
+      transition: transform 4s ease-out;
+    }
+
+    .lucky-wheel-slice {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-origin: center;
+      clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 50% 50%);
+    }
+
+    .lucky-wheel-slice:nth-child(1) { background: #ff4d4d; transform: rotate(0deg); }
+    .lucky-wheel-slice:nth-child(2) { background: #4d79ff; transform: rotate(45deg); }
+    .lucky-wheel-slice:nth-child(3) { background: #4dff4d; transform: rotate(90deg); }
+    .lucky-wheel-slice:nth-child(4) { background: #ffcc4d; transform: rotate(135deg); }
+    .lucky-wheel-slice:nth-child(5) { background: #ff4dff; transform: rotate(180deg); }
+    .lucky-wheel-slice:nth-child(6) { background: #4dffff; transform: rotate(225deg); }
+    .lucky-wheel-slice:nth-child(7) { background: #ff944d; transform: rotate(270deg); }
+    .lucky-wheel-slice:nth-child(8) { background: #944dff; transform: rotate(315deg); }
+
+    .lucky-wheel-slice-text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      font-size: 14px;
+      color: white;
+      text-align: center;
+      transform-origin: center;
+    }
+
+    .lucky-wheel-slice-text span {
+      position: absolute;
+      top: 20px;
+      transform: translateY(0);
+    }
+
+    .lucky-wheel-slice-text:nth-child(9)  { transform: rotate(22.5deg); }
+    .lucky-wheel-slice-text:nth-child(10) { transform: rotate(67.5deg); }
+    .lucky-wheel-slice-text:nth-child(11) { transform: rotate(112.5deg); }
+    .lucky-wheel-slice-text:nth-child(12) { transform: rotate(157.5deg); }
+    .lucky-wheel-slice-text:nth-child(13) { transform: rotate(202.5deg); }
+    .lucky-wheel-slice-text:nth-child(14) { transform: rotate(247.5deg); }
+    .lucky-wheel-slice-text:nth-child(15) { transform: rotate(292.5deg); }
+    .lucky-wheel-slice-text:nth-child(16) { transform: rotate(337.5deg); }
+
+    .lucky-wheel-slice-text:nth-child(9) span { transform: rotate(-22.5deg); }
+    .lucky-wheel-slice-text:nth-child(10) span { transform: rotate(-67.5deg); }
+    .lucky-wheel-slice-text:nth-child(11) span { transform: rotate(-112.5deg); }
+    .lucky-wheel-slice-text:nth-child(12) span { transform: rotate(-157.5deg); }
+    .lucky-wheel-slice-text:nth-child(13) span { transform: rotate(-202.5deg); }
+    .lucky-wheel-slice-text:nth-child(14) span { transform: rotate(-247.5deg); }
+    .lucky-wheel-slice-text:nth-child(15) span { transform: rotate(-292.5deg); }
+    .lucky-wheel-slice-text:nth-child(16) span { transform: rotate(-337.5deg); }
+
+    .lucky-wheel-spin-btn {
+      margin-top: 40px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .lucky-wheel-spin-btn:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+    }
+
+    .lucky-wheel-result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="lucky-wheel-body">
+    <div class="lucky-wheel-container">
+      <div class="lucky-wheel-pointer"></div>
+
+      <div class="lucky-wheel" id="lucky-wheel">
+        <div class="lucky-wheel-slice"></div>
+        <div class="lucky-wheel-slice"></div>
+        <div class="lucky-wheel-slice"></div>
+        <div class="lucky-wheel-slice"></div>
+        <div class="lucky-wheel-slice"></div>
+        <div class="lucky-wheel-slice"></div>
+        <div class="lucky-wheel-slice"></div>
+        <div class="lucky-wheel-slice"></div>
+
+        <div class="lucky-wheel-slice-text"><span>100K</span></div>
+        <div class="lucky-wheel-slice-text"><span>50K</span></div>
+        <div class="lucky-wheel-slice-text"><span>Free Spin</span></div>
+        <div class="lucky-wheel-slice-text"><span>Try Again</span></div>
+        <div class="lucky-wheel-slice-text"><span>500K</span></div>
+        <div class="lucky-wheel-slice-text"><span>10K</span></div>
+        <div class="lucky-wheel-slice-text"><span>1M</span></div>
+        <div class="lucky-wheel-slice-text"><span>Gift Box</span></div>
+      </div>
+
+      <button class="lucky-wheel-spin-btn" id="lucky-wheel-spin-btn">Spin</button>
+      <div class="lucky-wheel-result" id="lucky-wheel-result"></div>
+    </div>
+  </div>
+
+  <script>
+    const wheel = document.getElementById('lucky-wheel');
+    const spinBtn = document.getElementById('lucky-wheel-spin-btn');
+    const result = document.getElementById('lucky-wheel-result');
+    const prizes = ['100K', '50K', 'Free Spin', 'Try Again', '500K', '10K', '1M', 'Gift Box'];
+
+    spinBtn.addEventListener('click', () => {
+      spinBtn.disabled = true;
+      result.textContent = '';
+
+      const slices = prizes.length;
+      const sliceAngle = 360 / slices;
+      const randomIndex = Math.floor(Math.random() * slices);
+      const offset = Math.random() * sliceAngle * 0.8 - sliceAngle / 2;
+      const randomDeg = -(randomIndex * sliceAngle + offset) + 720;
+
+      wheel.style.transform = `rotate(${randomDeg}deg)`;
+
+      setTimeout(() => {
+        const normalizedDeg = ((-randomDeg % 360) + 360) % 360;
+        const winningIndex = Math.floor(normalizedDeg / sliceAngle) % slices;
+        result.textContent = `You won: ${prizes[winningIndex]}!`;
+        spinBtn.disabled = false;
+      }, 4000);
+    });
+  </script>
+</body>
+</html>

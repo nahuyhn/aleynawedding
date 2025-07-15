@@ -123,6 +123,9 @@
     .section-dark {
       background-color: #111;
     }
+    .wheels {
+      background-color: #111;
+    }
 
     h2 {
       font-size: 2.5em;
@@ -144,7 +147,7 @@
       border: none;
       background-color: white;
       color: black;
-      cursor: pointer
+      cursor: pointer;
       transition: all 0.3s ease;
     }
 
@@ -208,6 +211,49 @@
         font-size: 1em;
       }
     }
+    .segment {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
+  transform-origin: 50% 50%;
+  z-index: 1;
+  border-right: 1px solid rgba(255, 215, 0, 0.4); /* viền chia lát nhẹ */
+}
+
+.segment-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  width: 140px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+  z-index: 2;
+}
+
+/* Phân loại màu cho giải thưởng */
+.voucher {
+  color: #1e88e5;
+}
+.no-win {
+  color: #999;
+  font-style: italic;
+}
+.big-prize {
+  color: #e91e63;
+  font-weight: bold;
+  font-size: 16px;
+}
+.special-prize {
+  color: #d4af37;
+  font-weight: bold;
+  font-size: 15px;
+}
+
   </style>
 </head>
 <body>
@@ -262,5 +308,148 @@
       hero.style.backgroundImage = `url('${images[index]}')`;
     }, 5000);
   </script>
+
+ <section class="wheels">
+<!-- CONTAINER ĐỂ DÁN VÀO BODY -->
+<div id="spin-app" style="font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 50px 0; position: relative;">
+  <h2 style="font-size: 35px; font-weight: bold; margin-bottom: 20px; text-align: center;">
+  ✨ Aleyna Wedding Tri Ân Khách Hàng ✨<br>
+  Quay là có quà – Nhập thông tin bên dưới!
+</h2>
+  <!-- FORM BẮT NGƯỜI DÙNG NHẬP TÊN & SĐT -->
+  <form id="user-form" style="width: 90%; max-width: 400px; margin-bottom: 70px;">
+    <input type="text" id="name" placeholder="Họ & tên" required style="width: 100%; padding: 8px; margin-bottom: 10px;"/>
+    <input type="tel" id="phone" placeholder="Số điện thoại" required style="width: 100%; padding: 8px; margin-bottom: 10px;"/>
+    <button type="submit" style="width: 100%; padding: 10px; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+      Bắt đầu quay
+    </button>
+  </form>
+
+  
+  <div style="position: absolute ;top: 39%; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 30px solid red; z-index: 999;"></div>
+  <!-- VÒNG QUAY -->
+  <div id="lucky-wheel" style="position: relative; width: 300px; height: 300px; border-radius: 50%; border: 10px solid #333; overflow: hidden; transition: transform 4s ease-out; pointer-events: none;">
+    <!-- 8 lát cắt -->
+    <div style="background: #ff4d4d; transform: rotate(0deg);" class="slice"></div>
+    <div style="background: #4d79ff; transform: rotate(45deg);" class="slice"></div>
+    <div style="background: #4dff4d; transform: rotate(90deg);" class="slice"></div>
+    <div style="background: #ffcc4d; transform: rotate(135deg);" class="slice"></div>
+    <div style="background: #ff4dff; transform: rotate(180deg);" class="slice"></div>
+    <div style="background: #4dffff; transform: rotate(225deg);" class="slice"></div>
+    <div style="background: #ff944d; transform: rotate(270deg);" class="slice"></div>
+    <div style="background: #944dff; transform: rotate(315deg);" class="slice"></div>
+    <!-- Nhãn -->
+    <div class="label" style="transform: rotate(22.5deg);"><span style="transform: rotate(-22.5deg);">100K</span></div>
+    <div class="label" style="transform: rotate(67.5deg);"><span style="transform: rotate(-67.5deg);">50K</span></div>
+    <div class="label" style="transform: rotate(112.5deg);"><span style="transform: rotate(-112.5deg);">Free Spin</span></div>
+    <div class="label" style="transform: rotate(157.5deg);"><span style="transform: rotate(-157.5deg);">Try Again</span></div>
+    <div class="label" style="transform: rotate(202.5deg);"><span style="transform: rotate(-202.5deg);">500K</span></div>
+    <div class="label" style="transform: rotate(247.5deg);"><span style="transform: rotate(-247.5deg);">10K</span></div>
+    <div class="label" style="transform: rotate(292.5deg);"><span style="transform: rotate(-292.5deg);">1M</span></div>
+    <div class="label" style="transform: rotate(337.5deg);"><span style="transform: rotate(-337.5deg);">Gift Box</span></div>
+  </div>
+
+  <!-- KẾT QUẢ & NÚT QUAY -->
+  <button id="spin-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: not-allowed;" disabled>Quay</button>
+  <div id="spin-result" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
+
+</div>
+
+<!-- CSS slices & labels -->
+<style>
+  .slice {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 50% 50%);
+  }
+  .label {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 14px; color: white;
+    text-align: center;
+    transform-origin: center;
+  }
+  .label span { position: absolute; top: 20px; }
+</style>
+<script>
+  const form = document.getElementById('user-form');
+  const spinBtn = document.getElementById('spin-btn');
+  const wheel = document.getElementById('lucky-wheel');
+  const result = document.getElementById('spin-result');
+  const prizes = ['100K','50K','Free Spin','Try Again','500K','10K','1M','Gift Box'];
+
+  let user = {};
+  let spins = parseInt(localStorage.getItem('spinCount')) || 0;
+  updateButtonState();
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    if (!name || !phone) return alert('Vui lòng nhập đầy đủ thông tin.');
+    user = { name, phone, timestamp: new Date().toISOString() };
+    form.style.display = 'none';
+    spinBtn.disabled = spins >= 2;
+    spinBtn.style.cursor = spins < 2 ? 'pointer' : 'not-allowed';
+  });
+
+  spinBtn.addEventListener('click', () => {
+    if (spins >= 2) return alert('Bạn đã quay đủ 2 lần.');
+    spinBtn.disabled = true;
+    const sliceAngle = 360 / prizes.length;
+    const idx = Math.floor(Math.random() * prizes.length);
+    const offset = Math.random() * sliceAngle * 0.8 - sliceAngle/2;
+    const deg = -(idx * sliceAngle + offset) + 720;
+    wheel.style.transform = `rotate(${deg}deg)`;
+    setTimeout(() => {
+      const prize = prizes[idx];
+      result.textContent = `Bạn trúng: ${prize}`;
+      spins++;
+      localStorage.setItem('spinCount', spins);
+      updateButtonState();
+
+      // GỬI DỮ LIỆU VỀ GOOGLE SHEET
+      fetch("https://script.google.com/macros/s/AKfycbwi5ol6se6K_BK87o3Uu77dxkHQ-AQkVd-ptlBob38Thlx-w6HKHYflNuMEmjNNhqEo/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: user.name,
+          phone: user.phone,
+          prize: prize,
+          time: new Date().toLocaleString('vi-VN')
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log('Đã gửi Google Sheet:', data))
+      .catch(err => console.error('Lỗi gửi Google Sheet:', err));
+    }, 4000);
+  });
+
+  function updateButtonState(){
+    spinBtn.textContent = spins >= 2 ? 'Đã hết lượt' : 'Quay';
+  }
+</script>
+</section>
+
+
+
 </body>
+<footer style="width: 100%; background-color: #333; color: #fff; padding: 30px 20px; margin-top: 60px; text-align: center; font-size: 14px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Aleyna Wedding</p>
+    <p>Địa chỉ: 35 Đường D11, Phường Tây Thạnh, TP. Hồ Chí Minh</p>
+    <p>Hotline: <a href="tel:0389446132" style="color: #ffcc00; text-decoration: none;">0909 123 456</a> | Zalo: <a href="https://zalo.me/0909123456" style="color: #ffcc00; text-decoration: none;">0909 123 456</a></p>
+    <p>Email: <a href="mailto:contact@aleyna.vn" style="color: #ffcc00; text-decoration: none;">contact@aleyna.vn</a></p>
+    <p style="margin-top: 20px; font-size: 13px; color: #bbb;">© 2025 Aleyna Wedding. Bản quyền đã được bảo hộ.</p>
+  </div>
+</footer>
 </html>
