@@ -415,38 +415,44 @@
   });
 
   spinBtn.addEventListener('click', () => {
-    if (spins >= 2) return alert('Bạn đã quay đủ 2 lần.');
-    spinBtn.disabled = true;
-    const sliceAngle = 360 / prizes.length;
-    const idx = Math.floor(Math.random() * prizes.length);
-    const offset = Math.random() * sliceAngle * 0.8 - sliceAngle/2;
-    const deg = -(idx * sliceAngle + offset) + 720;
-    wheel.style.transform = `rotate(${deg}deg)`;
-    setTimeout(() => {
-      const prize = prizes[idx];
-      result.textContent = `Bạn trúng: ${prize}`;
-      spins++;
-      localStorage.setItem('spinCount', spins);
-      updateButtonState();
+  if (spins >= 2) return alert('Bạn đã quay đủ 2 lần.');
+  spinBtn.disabled = true;
 
-      // GỬI DỮ LIỆU VỀ GOOGLE SHEET
-      fetch("https://script.google.com/macros/s/AKfycbwi5ol6se6K_BK87o3Uu77dxkHQ-AQkVd-ptlBob38Thlx-w6HKHYflNuMEmjNNhqEo/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: user.name,
-          phone: user.phone,
-          prize: prize,
-          time: new Date().toLocaleString('vi-VN')
-        })
+  const sliceAngle = 360 / prizes.length;
+  const randomDeg = Math.floor(Math.random() * 360); // Góc xoay cuối cùng
+  const rotateDeg = 360 * 5 + randomDeg; // 5 vòng + random
+
+  wheel.style.transform = `rotate(${rotateDeg}deg)`;
+
+  setTimeout(() => {
+    // Tính phần thưởng dựa trên góc cuối cùng
+    const finalDeg = (rotateDeg % 360 + 360) % 360; // Đảm bảo dương
+    const pickedIndex = Math.floor((360 - finalDeg) / sliceAngle) % prizes.length;
+    const prize = prizes[pickedIndex];
+
+    result.textContent = `Bạn trúng: ${prize}`;
+    spins++;
+    localStorage.setItem('spinCount', spins);
+    updateButtonState();
+
+    // Gửi dữ liệu về Google Sheet
+    fetch("https://script.google.com/macros/s/AKfycbwi5ol6se6K_BK87o3Uu77dxkHQ-AQkVd-ptlBob38Thlx-w6HKHYflNuMEmjNNhqEo/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        time: new Date().toLocaleString('vi-VN'),
+        name: user.name,
+        phone: user.phone,
+        prize: prize
       })
-      .then(res => res.json())
-      .then(data => console.log('Đã gửi Google Sheet:', data))
-      .catch(err => console.error('Lỗi gửi Google Sheet:', err));
-    }, 4000);
-  });
+    })
+    .then(res => res.json())
+    .then(data => console.log('Đã gửi Google Sheet:', data))
+    .catch(err => console.error('Lỗi gửi Google Sheet:', err));
+  }, 4000);
+});
 
   function updateButtonState(){
     spinBtn.textContent = spins >= 2 ? 'Đã hết lượt' : 'Quay';
