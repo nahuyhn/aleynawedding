@@ -64,6 +64,10 @@
 
   <!-- CSS nội bộ -->
   <style>
+    html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
     * {
       margin: 0;
       padding: 0;
@@ -253,7 +257,86 @@
   font-weight: bold;
   font-size: 15px;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center; align-items: center;
+  }
 
+  .modal-content {
+    background-color: #000000;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 18px;
+  }
+
+  .spinner {
+    border: 4px solid #eee;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .modal.show {
+    display: flex;
+  }
+
+  .modal button {
+    margin-top: 15px;
+    padding: 6px 16px;
+    border: none;
+    background: #3498db;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+.wheel-heading {
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(90deg, #f0c5d6, #e91e63, #f0c5d6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s ease-in-out infinite;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #ff69b4, 0 0 10px #f6abd3;
+  }
+  50% {
+    text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493;
+  }
+}
+
+.glow-text {
+  background: linear-gradient(90deg, #f7f4f5, #f9c6d7, #f9f9f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  animation: glow 0.4s ease-in-out infinite;
+  font-size: 20px; /* ← tăng kích thước tại đây */
+}
   </style>
 </head>
 <body>
@@ -262,6 +345,9 @@
   <div class="hero" id="hero">
     <h1>ALEYNA WEDDING</h1>
     <button aria-label="Xem tiếp" onclick="document.getElementById('section-moment').scrollIntoView({ behavior: 'smooth' });">XEM TIẾP</button>
+    <button aria-label="Vòng quay may mắn" onclick="document.getElementById('spin-app').scrollIntoView({ behavior: 'smooth' });" style="margin-top: 15px;">
+  VÒNG QUAY ALEYNA, QUAY LÀ CÓ QUÀ<br>
+</button>
   </div>
 
   <!-- Khoảnh khắc -->
@@ -312,9 +398,8 @@
  <section class="wheels">
 <!-- CONTAINER ĐỂ DÁN VÀO BODY -->
 <div id="spin-app" style="font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 50px 0; position: relative;">
-  <h2 style="font-size: 35px; font-weight: bold; margin-bottom: 20px; text-align: center;">
-  ✨ Aleyna Wedding Tri Ân Khách Hàng ✨<br>
-  Quay là có quà – Nhập thông tin bên dưới!
+  <h2 class="wheel-heading">
+  ✨Vòng Quay Aleyna, quay là có quà✨
 </h2>
   <!-- FORM BẮT NGƯỜI DÙNG NHẬP TÊN & SĐT -->
   <form id="user-form" style="width: 90%; max-width: 400px; margin-bottom: 70px;">
@@ -344,23 +429,47 @@
   <div id="lucky-wheel" style="position: relative; width: 300px; height: 300px; border-radius: 50%; border: 10px solid #333; overflow: hidden; transition: transform 4s ease-out; pointer-events: none;">
     <!-- 8 lát cắt -->
     <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-bottom: 30px solid red; z-index: 999;"></div>
-    <div style="background: #ff4d4d; transform: rotate(0deg);" class="slice"></div>
-    <div style="background: #4d79ff; transform: rotate(45deg);" class="slice"></div>
-    <div style="background: #4dff4d; transform: rotate(90deg);" class="slice"></div>
-    <div style="background: #ffcc4d; transform: rotate(135deg);" class="slice"></div>
-    <div style="background: #ff4dff; transform: rotate(180deg);" class="slice"></div>
-    <div style="background: #4dffff; transform: rotate(225deg);" class="slice"></div>
-    <div style="background: #ff944d; transform: rotate(270deg);" class="slice"></div>
-    <div style="background: #944dff; transform: rotate(315deg);" class="slice"></div>
+    <div style="background: #ff69b4; transform: rotate(0deg);" class="slice"></div>
+    <div style="background: #ff1493; transform: rotate(45deg);" class="slice"></div>
+    <div style="background: #ff69b4; transform: rotate(90deg);" class="slice"></div>
+    <div style="background: #ff1493; transform: rotate(135deg);" class="slice"></div>
+    <div style="background: #ff69b4; transform: rotate(180deg);" class="slice"></div>
+    <div style="background: #ff1493; transform: rotate(225deg);" class="slice"></div>
+    <div style="background: #ff69b4; transform: rotate(270deg);" class="slice"></div>
+    <div style="background: #ff1493; transform: rotate(315deg);" class="slice"></div>
     <!-- Nhãn -->
-    <div class="label" style="transform: rotate(22.5deg);"><span style="transform: rotate(-22.5deg);">100K</span></div>
-    <div class="label" style="transform: rotate(67.5deg);"><span style="transform: rotate(-67.5deg);">50K</span></div>
-    <div class="label" style="transform: rotate(112.5deg);"><span style="transform: rotate(-112.5deg);">Free Spin</span></div>
-    <div class="label" style="transform: rotate(157.5deg);"><span style="transform: rotate(-157.5deg);">Try Again</span></div>
-    <div class="label" style="transform: rotate(202.5deg);"><span style="transform: rotate(-202.5deg);">500K</span></div>
-    <div class="label" style="transform: rotate(247.5deg);"><span style="transform: rotate(-247.5deg);">10K</span></div>
-    <div class="label" style="transform: rotate(292.5deg);"><span style="transform: rotate(-292.5deg);">1M</span></div>
-    <div class="label" style="transform: rotate(337.5deg);"><span style="transform: rotate(-337.5deg);">Gift Box</span></div>
+    <div class="label" style="transform: rotate(22.5deg);">
+  <span class="glow-text" style="transform: rotate(-22.5deg);">-5%</span>
+</div>
+
+<div class="label" style="transform: rotate(67.5deg);">
+  <span class="glow-text" style="transform: rotate(-67.5deg);">50K</span>
+</div>
+
+<div class="label" style="transform: rotate(112.5deg);">
+  <span class="glow-text" style="transform: rotate(-112.5deg);">100k</span>
+</div>
+
+<div class="label" style="transform: rotate(157.5deg);">
+  <span class="glow-text" style="transform: rotate(-157.5deg);">-10%</span>
+</div>
+
+<div class="label" style="transform: rotate(202.5deg);">
+  <span class="glow-text" style="transform: rotate(-202.5deg);">Socola</span>
+</div>
+
+<div class="label" style="transform: rotate(247.5deg);">
+  <span class="glow-text" style="transform: rotate(-247.5deg);top: 30px; position: absolute;">Bao lì xì</span>
+</div>
+
+<div class="label" style="transform: rotate(292.5deg);">
+  <span class="glow-text" style="transform: rotate(-292.5deg);top: 30px; position: absolute;">Áo thun</span>
+</div>
+
+<div class="label" style="transform: rotate(337.5deg);">
+  <span class="glow-text" style="transform: rotate(-337.5deg);">Gift</span>
+</div>
+
   </div>
 
   <!-- KẾT QUẢ & NÚT QUAY -->
@@ -392,76 +501,111 @@
   }
   .label span { position: absolute; top: 20px; }
 </style>
+<div id="modal" class="modal">
+  <div class="modal-content" id="modal-content">
+    <!-- Nội dung động sẽ được chèn bằng JS -->
+  </div>
+</div>
 <script>
   const form = document.getElementById('user-form');
   const spinBtn = document.getElementById('spin-btn');
   const wheel = document.getElementById('lucky-wheel');
   const result = document.getElementById('spin-result');
-  const prizes = ['100K','50K','Free Spin','Try Again','500K','10K','1M','Gift Box'];
+  const prizes = ['-5%', '50K', '100k', '-10%', 'Socola', '12 Bao lì xì', 'Áo thun', 'Gift'];
 
   let user = {};
-  let spins = parseInt(localStorage.getItem('spinCount')) || 0;
-  updateButtonState();
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = form.name.value.trim();
-    const phone = form.phone.value.trim();
-    if (!name || !phone) return alert('Vui lòng nhập đầy đủ thông tin.');
-    user = { name, phone, timestamp: new Date().toISOString() };
-    form.style.display = 'none';
-    spinBtn.disabled = spins >= 2;
-    spinBtn.style.cursor = spins < 2 ? 'pointer' : 'not-allowed';
+  form.addEventListener('submit', async e => {
+    e.preventDefault(); // ✅ CHẶN FORM GỬI VÀ TẢI LẠI TRANG
+  result.textContent = '';
+  showModal('<div class="spinner"></div><div>Đang kiểm tra số điện thoại...</div>');
+
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  const checkRes = await fetch(`https://script.google.com/macros/s/AKfycbx0EUNTwl_UwynVHp5lO5MWgZFki_v6BmyXDKJbOgLT4x-TsvxQSNX6TKWBbkXIfg4vnQ/exec?phone=${encodeURIComponent(phone)}`);
+  const checkData = await checkRes.json();
+
+  if (checkData.status === 'used') {
+    showModal('<div>Số điện thoại này đã tham gia quay thưởng!</div><button onclick="closeModal()">Đóng</button>');
+    return;
+  }
+
+  // Cho phép quay
+  user = { name, phone };
+  form.style.display = 'none';
+  spinBtn.disabled = false;
+  spinBtn.style.cursor = 'pointer';
+  spinBtn.textContent = 'Quay';
+  showModal('<div>Số điện thoại hợp lệ. Bạn có thể bắt đầu quay!</div><button onclick="closeModal()">OK</button>');
   });
 
-  spinBtn.addEventListener('click', () => {
-  if (spins >= 2) return alert('Bạn đã quay đủ 2 lần.');
-  spinBtn.disabled = true;
+  spinBtn.addEventListener('click', async () => {
+    if (!user || !user.phone || !user.name) {
+      alert("Vui lòng nhập họ tên và số điện thoại trước.");
+      return;
+    }
 
-  const sliceAngle = 360 / prizes.length;
-  const randomDeg = Math.floor(Math.random() * 360); // Góc xoay cuối cùng
-  const rotateDeg = 360 * 5 + randomDeg; // 5 vòng + random
+    spinBtn.disabled = true;
+    spinBtn.style.cursor = 'not-allowed';
 
-  wheel.style.transform = `rotate(${rotateDeg}deg)`;
+    const sliceAngle = 360 / prizes.length;
+    const randomDeg = Math.floor(Math.random() * 360);
+    const rotateDeg = 360 * 5 + randomDeg;
 
-  setTimeout(() => {
-    // Tính phần thưởng dựa trên góc cuối cùng
-    const finalDeg = (rotateDeg % 360 + 360) % 360; // Đảm bảo dương
-    const pickedIndex = Math.floor((360 - finalDeg) / sliceAngle) % prizes.length;
-    const prize = prizes[pickedIndex];
+    wheel.style.transform = `rotate(${rotateDeg}deg)`;
 
-    result.textContent = `Bạn trúng: ${prize}`;
-    spins++;
-    localStorage.setItem('spinCount', spins);
-    updateButtonState();
+    setTimeout(() => {
+      const finalDeg = (rotateDeg % 360 + 360) % 360;
+      const pickedIndex = Math.floor((360 - finalDeg) / sliceAngle) % prizes.length;
+      const prize = prizes[pickedIndex];
 
-    // Gửi dữ liệu về Google Sheet
-    fetch("https://script.google.com/macros/s/AKfycbxuUQgqA-iNGJlHE0T87keler7YUhxCKlVaIs2jjqGBQw4zrlgJR-lAVPqOLBUCLroLOQ/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        time: new Date().toLocaleString('vi-VN'),
+      
+      // ✅ Thêm hiển thị popup kết quả
+  showModal(`
+    <div style="font-size: 20px; font-weight: bold;">🎉 Chúc mừng! 🎉</div>
+    <div style="margin: 10px 0;">Bạn đã trúng: <span style="color: #e91e63; font-size: 22px;">${prize}</span> <br> (Được áp dụng thông qua số điện thoại khi sử dụng dịch vụ)</div>
+    <button onclick="closeModal()">Đóng</button>
+  `);
+      const params = new URLSearchParams({
         name: user.name,
         phone: user.phone,
-        prize: prize
-      })
-    })
-    .then(res => res.json())
-    .then(data => console.log('Đã gửi Google Sheet:', data))
-    .catch(err => console.error('Lỗi gửi Google Sheet:', err));
-  }, 4000);
-});
+        prize: prize,
+        time: new Date().toLocaleString('vi-VN')
+      });
 
-  function updateButtonState(){
-    spinBtn.textContent = spins >= 2 ? 'Đã hết lượt' : 'Quay';
+      fetch("https://script.google.com/macros/s/AKfycbx0EUNTwl_UwynVHp5lO5MWgZFki_v6BmyXDKJbOgLT4x-TsvxQSNX6TKWBbkXIfg4vnQ/exec?" + params.toString())
+        .then(res => res.json())
+        .then(data => {
+          console.log('Đã gửi dữ liệu lên Google Sheet:', data);
+          spinBtn.textContent = 'Đã quay';
+        })
+        .catch(err => {
+          console.error('Lỗi gửi kết quả:', err);
+          result.textContent = '❗ Có lỗi khi lưu kết quả.';
+        });
+
+    }, 4000);
+  });
+  const modal = document.getElementById('modal');
+const modalContent = document.getElementById('modal-content');
+
+function showModal(html, autoClose = false, delay = 2000) {
+  modalContent.innerHTML = html;
+  modal.classList.add('show');
+  if (autoClose) {
+    setTimeout(() => {
+      modal.classList.remove('show');
+    }, delay);
   }
+}
+
+function closeModal() {
+  modal.classList.remove('show');
+}
 </script>
 </section>
 
-
-<button onclick="localStorage.clear(); location.reload();" style="position: fixed; bottom: 10px; left: 10px; padding: 6px 10px; z-index: 9999;">🧪 Reset Quay</button>
 </body>
 <footer style="width: 100%; background-color: #333; color: #fff; padding: 30px 20px; margin-top: 60px; text-align: center; font-size: 14px;">
   <div style="max-width: 800px; margin: 0 auto;">

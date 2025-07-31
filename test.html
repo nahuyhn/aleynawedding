@@ -1,185 +1,156 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Vòng quay may mắn</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vòng Quay Aleyna</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f5f5f5;
-    }
-    .lucky-wheel-body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px 0;
-    }
-    .lucky-wheel-container {
+      background: #111;
+      color: white;
+      margin: 0;
+      padding: 0;
       text-align: center;
-      position: relative;
     }
-
-    .lucky-wheel-pointer {
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-top: 30px solid red;
-      z-index: 100;
+    .wheels {
+      padding: 40px 20px;
     }
-
-    .lucky-wheel {
-      position: relative;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      border: 10px solid #333;
-      overflow: hidden;
-      transition: transform 4s ease-out;
-    }
-
-    .lucky-wheel-slice {
+    .slice {
       position: absolute;
       width: 100%;
       height: 100%;
       transform-origin: center;
       clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 50% 50%);
     }
-
-    .lucky-wheel-slice:nth-child(1) { background: #ff4d4d; transform: rotate(0deg); }
-    .lucky-wheel-slice:nth-child(2) { background: #4d79ff; transform: rotate(45deg); }
-    .lucky-wheel-slice:nth-child(3) { background: #4dff4d; transform: rotate(90deg); }
-    .lucky-wheel-slice:nth-child(4) { background: #ffcc4d; transform: rotate(135deg); }
-    .lucky-wheel-slice:nth-child(5) { background: #ff4dff; transform: rotate(180deg); }
-    .lucky-wheel-slice:nth-child(6) { background: #4dffff; transform: rotate(225deg); }
-    .lucky-wheel-slice:nth-child(7) { background: #ff944d; transform: rotate(270deg); }
-    .lucky-wheel-slice:nth-child(8) { background: #944dff; transform: rotate(315deg); }
-
-    .lucky-wheel-slice-text {
+    .label {
       position: absolute;
       width: 100%;
       height: 100%;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      font-size: 14px;
-      color: white;
+      font-size: 14px; color: white;
       text-align: center;
       transform-origin: center;
     }
-
-    .lucky-wheel-slice-text span {
-      position: absolute;
-      top: 20px;
-      transform: translateY(0);
-    }
-
-    .lucky-wheel-slice-text:nth-child(9)  { transform: rotate(22.5deg); }
-    .lucky-wheel-slice-text:nth-child(10) { transform: rotate(67.5deg); }
-    .lucky-wheel-slice-text:nth-child(11) { transform: rotate(112.5deg); }
-    .lucky-wheel-slice-text:nth-child(12) { transform: rotate(157.5deg); }
-    .lucky-wheel-slice-text:nth-child(13) { transform: rotate(202.5deg); }
-    .lucky-wheel-slice-text:nth-child(14) { transform: rotate(247.5deg); }
-    .lucky-wheel-slice-text:nth-child(15) { transform: rotate(292.5deg); }
-    .lucky-wheel-slice-text:nth-child(16) { transform: rotate(337.5deg); }
-
-    .lucky-wheel-slice-text:nth-child(9) span { transform: rotate(-22.5deg); }
-    .lucky-wheel-slice-text:nth-child(10) span { transform: rotate(-67.5deg); }
-    .lucky-wheel-slice-text:nth-child(11) span { transform: rotate(-112.5deg); }
-    .lucky-wheel-slice-text:nth-child(12) span { transform: rotate(-157.5deg); }
-    .lucky-wheel-slice-text:nth-child(13) span { transform: rotate(-202.5deg); }
-    .lucky-wheel-slice-text:nth-child(14) span { transform: rotate(-247.5deg); }
-    .lucky-wheel-slice-text:nth-child(15) span { transform: rotate(-292.5deg); }
-    .lucky-wheel-slice-text:nth-child(16) span { transform: rotate(-337.5deg); }
-
-    .lucky-wheel-spin-btn {
-      margin-top: 40px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .lucky-wheel-spin-btn:disabled {
-      background-color: #666;
-      cursor: not-allowed;
-    }
-
-    .lucky-wheel-result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
+    .label span { position: absolute; top: 20px; }
   </style>
 </head>
 <body>
-  <div class="lucky-wheel-body">
-    <div class="lucky-wheel-container">
-      <div class="lucky-wheel-pointer"></div>
+<section class="wheels">
+  <div id="spin-app" style="display: flex; flex-direction: column; align-items: center;">
+    <h2 style="font-size: 35px; margin-bottom: 20px;">
+      ✨Vòng Quay Aleyna, quay là có quà✨
+    </h2>
+    <form id="user-form" style="width: 90%; max-width: 400px; margin-bottom: 70px;">
+      <input type="text" id="name" placeholder="Họ & tên" required style="width: 100%; padding: 8px; margin-bottom: 10px;"/>
+      <input type="tel" id="phone" placeholder="Số điện thoại" required style="width: 100%; padding: 8px; margin-bottom: 10px;"/>
+      <button type="submit" style="width: 100%; padding: 10px; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+        Bắt đầu quay
+      </button>
+    </form>
 
-      <div class="lucky-wheel" id="lucky-wheel">
-        <div class="lucky-wheel-slice"></div>
-        <div class="lucky-wheel-slice"></div>
-        <div class="lucky-wheel-slice"></div>
-        <div class="lucky-wheel-slice"></div>
-        <div class="lucky-wheel-slice"></div>
-        <div class="lucky-wheel-slice"></div>
-        <div class="lucky-wheel-slice"></div>
-        <div class="lucky-wheel-slice"></div>
-
-        <div class="lucky-wheel-slice-text"><span>100K</span></div>
-        <div class="lucky-wheel-slice-text"><span>50K</span></div>
-        <div class="lucky-wheel-slice-text"><span>Free Spin</span></div>
-        <div class="lucky-wheel-slice-text"><span>Try Again</span></div>
-        <div class="lucky-wheel-slice-text"><span>500K</span></div>
-        <div class="lucky-wheel-slice-text"><span>10K</span></div>
-        <div class="lucky-wheel-slice-text"><span>1M</span></div>
-        <div class="lucky-wheel-slice-text"><span>Gift Box</span></div>
+    <div style="position: relative; width: 300px; height: 330px;">
+      <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 30px solid red; z-index: 10;"></div>
+      <div id="lucky-wheel" style="position: relative; width: 300px; height: 300px; border-radius: 50%; border: 10px solid #333; overflow: hidden; transition: transform 4s ease-out; pointer-events: none;">
+        <div style="background: #ff4d4d; transform: rotate(0deg);" class="slice"></div>
+        <div style="background: #4d79ff; transform: rotate(45deg);" class="slice"></div>
+        <div style="background: #4dff4d; transform: rotate(90deg);" class="slice"></div>
+        <div style="background: #ffcc4d; transform: rotate(135deg);" class="slice"></div>
+        <div style="background: #ff4dff; transform: rotate(180deg);" class="slice"></div>
+        <div style="background: #4dffff; transform: rotate(225deg);" class="slice"></div>
+        <div style="background: #ff944d; transform: rotate(270deg);" class="slice"></div>
+        <div style="background: #944dff; transform: rotate(315deg);" class="slice"></div>
+        <div class="label" style="transform: rotate(22.5deg);"><span style="transform: rotate(-22.5deg);">100K</span></div>
+        <div class="label" style="transform: rotate(67.5deg);"><span style="transform: rotate(-67.5deg);">50K</span></div>
+        <div class="label" style="transform: rotate(112.5deg);"><span style="transform: rotate(-112.5deg);">Free Spin</span></div>
+        <div class="label" style="transform: rotate(157.5deg);"><span style="transform: rotate(-157.5deg);">Try Again</span></div>
+        <div class="label" style="transform: rotate(202.5deg);"><span style="transform: rotate(-202.5deg);">500K</span></div>
+        <div class="label" style="transform: rotate(247.5deg);"><span style="transform: rotate(-247.5deg);">10K</span></div>
+        <div class="label" style="transform: rotate(292.5deg);"><span style="transform: rotate(-292.5deg);">1M</span></div>
+        <div class="label" style="transform: rotate(337.5deg);"><span style="transform: rotate(-337.5deg);">Gift Box</span></div>
       </div>
-
-      <button class="lucky-wheel-spin-btn" id="lucky-wheel-spin-btn">Spin</button>
-      <div class="lucky-wheel-result" id="lucky-wheel-result"></div>
+      <button id="spin-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: not-allowed;" disabled>Quay</button>
+      <div id="spin-result" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
     </div>
   </div>
+</section>
+<script>
+  const form = document.getElementById('user-form');
+  const spinBtn = document.getElementById('spin-btn');
+  const wheel = document.getElementById('lucky-wheel');
+  const result = document.getElementById('spin-result');
+  const prizes = ['100K','50K','Free Spin','Try Again','500K','10K','1M','Gift Box'];
 
-  <script>
-    const wheel = document.getElementById('lucky-wheel');
-    const spinBtn = document.getElementById('lucky-wheel-spin-btn');
-    const result = document.getElementById('lucky-wheel-result');
-    const prizes = ['100K', '50K', 'Free Spin', 'Try Again', '500K', '10K', '1M', 'Gift Box'];
+  let user = {};
 
-    spinBtn.addEventListener('click', () => {
-      spinBtn.disabled = true;
-      result.textContent = '';
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    if (!name || !phone) return alert('Vui lòng nhập đầy đủ thông tin.');
 
-      const slices = prizes.length;
-      const sliceAngle = 360 / slices;
-      const randomIndex = Math.floor(Math.random() * slices);
-      const offset = Math.random() * sliceAngle * 0.8 - sliceAngle / 2;
-      const randomDeg = -(randomIndex * sliceAngle + offset) + 720;
+    // Kiểm tra số điện thoại đã quay chưa
+    const checkUrl = `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?phone=${encodeURIComponent(phone)}`;
+    try {
+      const res = await fetch(checkUrl);
+      const data = await res.json();
 
-      wheel.style.transform = `rotate(${randomDeg}deg)`;
+      if (data.exists) {
+        alert('Số điện thoại này đã quay rồi. Mỗi số chỉ được tham gia 1 lần.');
+        return;
+      }
 
-      setTimeout(() => {
-        const normalizedDeg = ((-randomDeg % 360) + 360) % 360;
-        const winningIndex = Math.floor(normalizedDeg / sliceAngle) % slices;
-        result.textContent = `You won: ${prizes[winningIndex]}!`;
-        spinBtn.disabled = false;
-      }, 4000);
-    });
-  </script>
+      user = { name, phone, timestamp: new Date().toISOString() };
+      form.style.display = 'none';
+      spinBtn.disabled = false;
+      spinBtn.style.cursor = 'pointer';
+
+    } catch (err) {
+      console.error('Lỗi kiểm tra số điện thoại:', err);
+      alert('Đã xảy ra lỗi. Vui lòng thử lại.');
+    }
+  });
+
+  spinBtn.addEventListener('click', () => {
+    spinBtn.disabled = true;
+
+    const sliceAngle = 360 / prizes.length;
+    const randomDeg = Math.floor(Math.random() * 360);
+    const rotateDeg = 360 * 5 + randomDeg;
+
+    wheel.style.transform = `rotate(${rotateDeg}deg)`;
+
+    setTimeout(() => {
+      const finalDeg = (rotateDeg % 360 + 360) % 360;
+      const pickedIndex = Math.floor((360 - finalDeg) / sliceAngle) % prizes.length;
+      const prize = prizes[pickedIndex];
+
+      result.textContent = `Bạn trúng: ${prize}`;
+
+      const params = new URLSearchParams({
+        name: user.name,
+        phone: user.phone,
+        prize: prize,
+        time: new Date().toLocaleString('vi-VN')
+      });
+
+      fetch("https://script.google.com/macros/s/AKfycbxZHpC5cbb2c0pt_Tt3AiukCSGQzqu8_3BCujl5W8B-buId_scw4TgWHHbcuL_c40rzhA/exec?" + params.toString())
+        .then(res => res.json())
+        .then(data => console.log('Đã gửi Google Sheet:', data))
+        .catch(err => console.error('Lỗi gửi Google Sheet:', err));
+
+    }, 4000);
+  });
+  function updateButtonState(){
+    spinBtn.textContent = spins >= 2 ? 'Đã hết lượt' : 'Quay';
+    spinBtn.disabled = spins >= 2;
+    spinBtn.style.cursor = spins >= 2 ? 'not-allowed' : 'pointer';
+  }
+</script>
+<button onclick="localStorage.clear(); location.reload();" style="position: fixed; bottom: 10px; left: 10px; padding: 6px 10px; z-index: 9999;">🧪 Reset Quay</button>
 </body>
 </html>
