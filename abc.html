@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>English Vocabulary Flashcards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .buttons {
+      margin-top: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin: 0 0.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #007bff;
+      color: white;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Learn English Vocabulary</h1>
+  <div class="card" id="flashcard">Click to show meaning</div>
+  <div class="buttons">
+    <button onclick="prevCard()">Previous</button>
+    <button onclick="nextCard()">Next</button>
+  </div>
+
+  <script>
+    const vocabulary = [
+      { word: "Terminal (n)", meaning: "Nhà đón khách" },
+      { word: "Highway (n)", meaning: "Xa lộ" },
+      { word: "Runway (n)", meaning: "Đường băng" },
+      { word: "Divert (v)", meaning: "Đổi hướng" },
+      { word: "Air-dash (v)", meaning: "Bay khẩn cấp" },
+      { word: "Baggage claim (n)", meaning: "Băng chuyền hành lý" },
+      { word: "Boarding pass (n)", meaning: "Vé lên máy bay" },
+      { word: "Lounge (n)", meaning: "Phòng chờ" },
+      { word: "Customs officer (n)", meaning: "Cán bộ hải quan" },
+      { word: "Departure (n)", meaning: "Sự khởi hành" },
+      { word: "Turbulence (n)", meaning: "Sự nhiễu loạn (không khí)" },
+      { word: "Aisle (n)", meaning: "Lối đi giữa các dãy ghế" },
+      { word: "Excess baggage (n)", meaning: "Hành lý quá tải" },
+      { word: "Jet lag (n)", meaning: "Lệch múi giờ" },
+      { word: "Stopover (n)", meaning: "Điểm dừng tạm" },
+      { word: "Long-haul (adj)", meaning: "Đường dài" },
+      { word: "Refrain (v)", meaning: "Kiềm chế, tránh làm gì" },
+      { word: "Trolley (n)", meaning: "Xe đẩy hành lý" },
+      { word: "Carousel (n)", meaning: "Băng chuyền hành lý" },
+      { word: "Adrift (adj)", meaning: "Trôi dạt" },
+      { word: "Aground (adv)", meaning: "Mắc cạn" },
+      { word: "Disembark (v)", meaning: "Xuống tàu/máy bay" },
+      { word: "Collision (n)", meaning: "Sự va chạm" },
+      { word: "Steer (v)", meaning: "Điều khiển, chèo lái" },
+      { word: "Seasick (adj)", meaning: "Say sóng" },
+      { word: "Choppy (adj)", meaning: "Biển động, sóng vỗ" },
+      { word: "Wreckage (n)", meaning: "Mảnh vỡ, xác tàu/máy bay" },
+      { word: "Stowage (n)", meaning: "Kho lưu trữ trên tàu" },
+      { word: "Navigable (adj)", meaning: "Để tàu thuyền qua lại được" },
+      { word: "Offshore (adv)", meaning: "Ngoài khơi, xa bờ" },
+      { word: "Take-off (n)", meaning: "Sự cất cánh" },
+      { word: "Mislead (v)", meaning: "Đánh lừa, gây hiểu nhầm" },
+      { word: "In advance (adv)", meaning: "Trước (về thời gian)" },
+      { word: "Narrow escape (n phr)", meaning: "Thoát hiểm trong gang tấc" },
+      { word: "Check-in (v/n)", meaning: "Đăng ký (vào khách sạn, chuyến bay...)" },
+      { word: "Detain (v)", meaning: "Giữ lại, ngăn lại" },
+      { word: "Steer to safety (v phr)", meaning: "Điều khiển đến nơi an toàn" }
+    ];
+
+    let currentIndex = 0;
+    let showingWord = true;
+
+    const flashcard = document.getElementById("flashcard");
+
+    function showCard() {
+      const entry = vocabulary[currentIndex];
+      flashcard.textContent = showingWord ? entry.word : entry.meaning;
+    }
+
+    flashcard.addEventListener("click", () => {
+      showingWord = !showingWord;
+      showCard();
+    });
+
+    function nextCard() {
+      if (currentIndex < vocabulary.length - 1) {
+        currentIndex++;
+        showingWord = true;
+        showCard();
+      }
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showingWord = true;
+        showCard();
+      }
+    }
+
+    showCard();
+  </script>
+</body>
+</html>
