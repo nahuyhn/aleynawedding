@@ -411,7 +411,7 @@
   </form>
 
   
-  <div style="position: relative; width: 300px; height: 330px;">
+  <div style="position: relative; width: 400px; height: 430px;">
   <!-- Mũi tên phía trên -->
   <div style="
     position: absolute;
@@ -426,7 +426,7 @@
     z-index: 10;
   "></div>
   <!-- VÒNG QUAY -->
-  <div id="lucky-wheel" style="position: relative; width: 300px; height: 300px; border-radius: 50%; border: 10px solid #333; overflow: hidden; transition: transform 4s ease-out; pointer-events: none;">
+  <div id="lucky-wheel" style="position: relative; width: 400px; height: 400px; border-radius: 50%; border: 10px solid #333; overflow: hidden; transition: transform 4s ease-out; pointer-events: none;">
     <!-- 8 lát cắt -->
     <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-bottom: 30px solid red; z-index: 999;"></div>
     <div style="background: #ff69b4; transform: rotate(0deg);" class="slice"></div>
@@ -521,8 +521,14 @@
   showModal('<div class="spinner"></div><div>Đang kiểm tra số điện thoại...</div>');
 
   const name = document.getElementById('name').value.trim();
+  
   const phone = document.getElementById('phone').value.trim();
-
+  // Kiểm tra định dạng số điện thoại Việt Nam (10 số, bắt đầu từ 03, 05, 07, 08, 09)
+const phoneRegex = /^(03|05|07|08|09)\d{8}$/;
+if (!phoneRegex.test(phone)) {
+  showModal('<div>Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng 10 số.</div><button onclick="closeModal()">Đóng</button>');
+  return;
+}
   const checkRes = await fetch(`https://script.google.com/macros/s/AKfycbx0EUNTwl_UwynVHp5lO5MWgZFki_v6BmyXDKJbOgLT4x-TsvxQSNX6TKWBbkXIfg4vnQ/exec?phone=${encodeURIComponent(phone)}`);
   const checkData = await checkRes.json();
 
