@@ -41,6 +41,9 @@
 
     .buttons {
       margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     button {
@@ -71,41 +74,39 @@
     }
 
     @media only screen and (max-width: 600px) {
-  body {
-    padding: 1rem;
-  }
+      body {
+        padding: 1rem;
+      }
 
-  .card {
-    width: 100%;
-    max-width: none;
-    height: auto;
-    min-height: 180px;
-    font-size: 1rem;
-    padding: 1rem;
-  }
+      .card {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        min-height: 180px;
+        font-size: 1rem;
+        padding: 1rem;
+      }
 
-  h1 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
+      h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
 
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
+      .buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
 
-  .buttons button {
-    width: 90%;
-    font-size: 1rem;
-    padding: 0.75rem;
-  }
-}
-
+      .buttons button {
+        width: 90%;
+        font-size: 1rem;
+        padding: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -154,7 +155,6 @@
 
     let currentIndex = 0;
     let showingWord = true;
-
     const flashcard = document.getElementById("flashcard");
 
     function showCard() {
@@ -184,30 +184,35 @@
     }
 
     function speak(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
-  const voices = window.speechSynthesis.getVoices();
+      const cleanText = text.replace(/\(.*?\)/g, "").trim();
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.lang = "en-US";
 
-  // Tìm giọng nói tiếng Anh - Mỹ ưu tiên Google (nếu có)
-  const selectedVoice = voices.find(voice =>
-    voice.name.includes("Google US English") || 
-    (voice.lang === "en-US" && voice.name.toLowerCase().includes("english"))
-  );
+      const voices = speechSynthesis.getVoices();
+      const englishVoices = voices.filter(voice =>
+        voice.lang === "en-US" || voice.lang.startsWith("en-")
+      );
 
-  if (selectedVoice) {
-    utterance.voice = selectedVoice;
-  } else {
-    utterance.lang = "en-US"; // fallback nếu không có giọng cụ thể
-  }
+      const selectedVoice = englishVoices.find(voice =>
+        voice.name.includes("Google") || voice.name.toLowerCase().includes("english")
+      );
 
-  speechSynthesis.speak(utterance);
-}
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+      }
 
+      speechSynthesis.speak(utterance);
+    }
 
     document.getElementById("speakButton").addEventListener("click", () => {
       const entry = vocabulary[currentIndex];
-      const wordToSpeak = entry.word.replace(/\(.*?\)/g, "").trim(); // bỏ (n), (v)
-      speak(wordToSpeak);
+      speak(entry.word);
     });
+
+    // Ensure voices are loaded before first use
+    if (typeof speechSynthesis !== "undefined" && speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => {};
+    }
 
     showCard();
   </script>
