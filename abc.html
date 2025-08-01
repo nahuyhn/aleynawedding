@@ -46,25 +46,39 @@
     button {
       padding: 0.5rem 1rem;
       font-size: 1rem;
-      margin: 0 0.5rem;
+      margin: 0.3rem;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+    }
+
+    #prevBtn, #nextBtn {
       background: #007bff;
       color: white;
     }
 
-    button:hover {
+    #prevBtn:hover, #nextBtn:hover {
       background: #0056b3;
+    }
+
+    #speakButton {
+      background: #28a745;
+      color: white;
+    }
+
+    #speakButton:hover {
+      background: #218838;
     }
   </style>
 </head>
 <body>
   <h1>Learn English Vocabulary</h1>
   <div class="card" id="flashcard">Click to show meaning</div>
+
   <div class="buttons">
-    <button onclick="prevCard()">Previous</button>
-    <button onclick="nextCard()">Next</button>
+    <button id="prevBtn" onclick="prevCard()">Previous</button>
+    <button id="nextBtn" onclick="nextCard()">Next</button>
+    <button id="speakButton">🔊 Nghe phát âm</button>
   </div>
 
   <script>
@@ -131,6 +145,18 @@
         showCard();
       }
     }
+
+    function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      speechSynthesis.speak(utterance);
+    }
+
+    document.getElementById("speakButton").addEventListener("click", () => {
+      const entry = vocabulary[currentIndex];
+      const wordToSpeak = entry.word.replace(/\(.*?\)/g, "").trim(); // bỏ (n), (v)
+      speak(wordToSpeak);
+    });
 
     showCard();
   </script>
