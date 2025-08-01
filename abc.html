@@ -184,10 +184,24 @@
     }
 
     function speak(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-US";
-      speechSynthesis.speak(utterance);
-    }
+  const utterance = new SpeechSynthesisUtterance(text);
+  const voices = window.speechSynthesis.getVoices();
+
+  // Tìm giọng nói tiếng Anh - Mỹ ưu tiên Google (nếu có)
+  const selectedVoice = voices.find(voice =>
+    voice.name.includes("Google US English") || 
+    (voice.lang === "en-US" && voice.name.toLowerCase().includes("english"))
+  );
+
+  if (selectedVoice) {
+    utterance.voice = selectedVoice;
+  } else {
+    utterance.lang = "en-US"; // fallback nếu không có giọng cụ thể
+  }
+
+  speechSynthesis.speak(utterance);
+}
+
 
     document.getElementById("speakButton").addEventListener("click", () => {
       const entry = vocabulary[currentIndex];
