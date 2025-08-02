@@ -345,9 +345,18 @@
   <div class="hero" id="hero">
     <h1>ALEYNA WEDDING</h1>
     <button aria-label="Xem tiếp" onclick="document.getElementById('section-moment').scrollIntoView({ behavior: 'smooth' });">XEM TIẾP</button>
-    <button onclick="window.location.href='vong-quay.html'">VÒNG QUAY ALEYNA</button>
-</button>
+    <button onclick="scrollToWheel()">VÒNG QUAY ALEYNA</button>
   </div>
+  <script>
+  function scrollToWheel() {
+    const wheel = document.querySelector(".wheels"); // chọn theo class
+    if (wheel) {
+      wheel.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.error("Không tìm thấy phần tử có class='wheels'");
+    }
+  }
+</script>
 
   <!-- Khoảnh khắc -->
   <section class="section-dark" id="section-moment">
