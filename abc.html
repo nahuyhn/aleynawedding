@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>English Vocabulary Flashcards</title>
+  <title>English Vocabulary Flashcards - Education</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,6 +16,7 @@
 
     h1 {
       color: #333;
+      text-align: center;
     }
 
     .card {
@@ -44,12 +45,12 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 0.5rem;
     }
 
     button {
       padding: 0.5rem 1rem;
       font-size: 1rem;
-      margin: 0.3rem;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -110,47 +111,47 @@
   </style>
 </head>
 <body>
-  <h1>Learn English Vocabulary</h1>
+  <h1>Education Vocabulary Flashcards</h1>
   <div class="card" id="flashcard">Click to show meaning</div>
 
   <div class="buttons">
     <button id="prevBtn" onclick="prevCard()">Previous</button>
     <button id="nextBtn" onclick="nextCard()">Next</button>
-    <button id="speakButton">🔊 Nghe phát âm</button>
+    <button id="speakButton">🔊 Pronounce</button>
   </div>
 
   <script>
     const vocabulary = [
-      { word: "Curriculum (n)", meaning: "Chương trình học" },
-      { word: "Syllabus (n)", meaning: "Đề cương môn học" },
-      { word: "Tuition fee (n)", meaning: "Học phí" },
-      { word: "Scholarship (n)", meaning: "Học bổng" },
-      { word: "Drop out (v)", meaning: "Bỏ học giữa chừng" },
-      { word: "Lecture (n/v)", meaning: "Bài giảng / Giảng bài" },
-      { word: "Assignment (n)", meaning: "Bài tập lớn" },
-      { word: "Dissertation (n)", meaning: "Luận văn" },
-      { word: "Graduate (v/n)", meaning: "Tốt nghiệp / Sinh viên tốt nghiệp" },
-      { word: "Undergraduate (n)", meaning: "Sinh viên chưa tốt nghiệp" },
-      { word: "Postgraduate (n)", meaning: "Học viên sau đại học" },
-      { word: "Compulsory (adj)", meaning: "Bắt buộc" },
-      { word: "Optional (adj)", meaning: "Tùy chọn" },
-      { word: "Academic performance (n)", meaning: "Thành tích học tập" },
-      { word: "Distance learning (n)", meaning: "Học từ xa" },
-      { word: "Online course (n)", meaning: "Khóa học trực tuyến" },
-      { word: "Vocational training (n)", meaning: "Đào tạo nghề" },
-      { word: "Critical thinking (n)", meaning: "Tư duy phản biện" },
-      { word: "Literacy (n)", meaning: "Sự biết đọc, biết viết" },
-      { word: "Numeracy (n)", meaning: "Khả năng tính toán" },
-      { word: "Bullying (n)", meaning: "Bắt nạt học đường" },
-      { word: "Discipline (n)", meaning: "Kỷ luật" },
-      { word: "Extra-curricular activities (n)", meaning: "Hoạt động ngoại khóa" },
-      { word: "Boarding school (n)", meaning: "Trường nội trú" },
-      { word: "Public school (n)", meaning: "Trường công" },
-      { word: "Private school (n)", meaning: "Trường tư" },
-      { word: "Higher education (n)", meaning: "Giáo dục đại học" },
-      { word: "Lifelong learning (n)", meaning: "Học tập suốt đời" },
-      { word: "Educational inequality (n)", meaning: "Bất bình đẳng trong giáo dục" },
-      { word: "Academic pressure (n)", meaning: "Áp lực học tập" }
+      { word: "Enrolment (n)", meaning: "Sự ghi danh" },
+      { word: "Attendance (n)", meaning: "Sự có mặt" },
+      { word: "Lecture hall (n)", meaning: "Giảng đường" },
+      { word: "Dean (n)", meaning: "Trưởng khoa" },
+      { word: "Principal (n)", meaning: "Hiệu trưởng" },
+      { word: "Headmaster / Headmistress (n)", meaning: "Thầy / Cô hiệu trưởng" },
+      { word: "Pedagogy (n)", meaning: "Phương pháp giảng dạy" },
+      { word: "Mentor (n)", meaning: "Người hướng dẫn" },
+      { word: "Internship (n)", meaning: "Kỳ thực tập" },
+      { word: "Gap year (n)", meaning: "Năm nghỉ để trải nghiệm" },
+      { word: "Module (n)", meaning: "Học phần" },
+      { word: "Seminar (n)", meaning: "Buổi hội thảo" },
+      { word: "Plagiarism (n)", meaning: "Đạo văn" },
+      { word: "Commencement (n)", meaning: "Lễ tốt nghiệp" },
+      { word: "Faculty (n)", meaning: "Khoa / Giảng viên" },
+      { word: "Alumnus / Alumna (n)", meaning: "Cựu sinh viên" },
+      { word: "Prospectus (n)", meaning: "Tài liệu giới thiệu khóa học" },
+      { word: "MOOC (n)", meaning: "Khóa học đại trà trực tuyến" },
+      { word: "Learning outcome (n)", meaning: "Kết quả học tập" },
+      { word: "Standardized test (n)", meaning: "Bài kiểm tra chuẩn hóa" },
+      { word: "Credential (n)", meaning: "Chứng chỉ" },
+      { word: "Grant (n)", meaning: "Trợ cấp" },
+      { word: "Tenure (n)", meaning: "Biên chế giảng viên" },
+      { word: "Coeducation (n)", meaning: "Giáo dục đồng giới" },
+      { word: "Remedial class (n)", meaning: "Lớp học phụ đạo" },
+      { word: "Honor roll (n)", meaning: "Danh sách học sinh xuất sắc" },
+      { word: "Elective (n)", meaning: "Môn học tự chọn" },
+      { word: "Valedictorian (n)", meaning: "Thủ khoa phát biểu tốt nghiệp" },
+      { word: "School counselor (n)", meaning: "Cố vấn học đường" },
+      { word: "Learning disability (n)", meaning: "Khó khăn học tập" }
     ];
 
     let currentIndex = 0;
@@ -184,35 +185,16 @@
     }
 
     function speak(text) {
-      const cleanText = text.replace(/\(.*?\)/g, "").trim();
-      const utterance = new SpeechSynthesisUtterance(cleanText);
-      utterance.lang = "en-US";
-
-      const voices = speechSynthesis.getVoices();
-      const englishVoices = voices.filter(voice =>
-        voice.lang === "en-US" || voice.lang.startsWith("en-")
-      );
-
-      const selectedVoice = englishVoices.find(voice =>
-        voice.name.includes("Google") || voice.name.toLowerCase().includes("english")
-      );
-
-      if (selectedVoice) {
-        utterance.voice = selectedVoice;
-      }
-
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US"; // Đảm bảo đọc giọng tiếng Anh chuẩn
       speechSynthesis.speak(utterance);
     }
 
     document.getElementById("speakButton").addEventListener("click", () => {
       const entry = vocabulary[currentIndex];
-      speak(entry.word);
+      const wordToSpeak = entry.word.replace(/\(.*?\)/g, "").trim();
+      speak(wordToSpeak);
     });
-
-    // Ensure voices are loaded before first use
-    if (typeof speechSynthesis !== "undefined" && speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = () => {};
-    }
 
     showCard();
   </script>
