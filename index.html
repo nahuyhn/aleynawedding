@@ -377,6 +377,35 @@
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+.winner-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  padding: 10px 0;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  margin-top: 30px;
+  font-size: 16px;
+  font-family: 'Playfair Display', serif;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 25s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
   </style>
 </head>
 
@@ -541,7 +570,12 @@
           style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: not-allowed;"
           disabled>Quay</button>
         <div id="spin-result" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
-
+        <!-- Thanh trượt danh sách người trúng -->
+        <div class="winner-marquee">
+          <div class="marquee-content" id="marquee-content">
+            ⏳ Đang tải danh sách người trúng...
+          </div>
+        </div>
       </div>
 
       <!-- CSS slices & labels -->
@@ -602,7 +636,7 @@
             showModal('<div>Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng 10 số.</div><button onclick="closeModal()">Đóng</button>');
             return;
           }
-          const checkRes = await fetch(`https://script.google.com/macros/s/AKfycbx0EUNTwl_UwynVHp5lO5MWgZFki_v6BmyXDKJbOgLT4x-TsvxQSNX6TKWBbkXIfg4vnQ/exec?phone=${encodeURIComponent(phone)}`);
+          const checkRes = await fetch(`https://script.google.com/macros/s/AKfycbx7lJCTnsnmlMN2yt1ykalLVWZflsLq6VwsryifCmdnGHXUrsgqxWGWwgbexMnAHwjzsA/exec?phone=${encodeURIComponent(phone)}`);
           const checkData = await checkRes.json();
 
           if (checkData.status === 'used') {
@@ -653,7 +687,7 @@
               time: new Date().toLocaleString('vi-VN')
             });
 
-            fetch("https://script.google.com/macros/s/AKfycbx0EUNTwl_UwynVHp5lO5MWgZFki_v6BmyXDKJbOgLT4x-TsvxQSNX6TKWBbkXIfg4vnQ/exec?" + params.toString())
+            fetch("https://script.google.com/macros/s/AKfycbx7lJCTnsnmlMN2yt1ykalLVWZflsLq6VwsryifCmdnGHXUrsgqxWGWwgbexMnAHwjzsA/exec?" + params.toString())
               .then(res => res.json())
               .then(data => {
                 console.log('Đã gửi dữ liệu lên Google Sheet:', data);
@@ -682,6 +716,23 @@
         function closeModal() {
           modal.classList.remove('show');
         }
+         // TẢI DANH SÁCH NGƯỜI TRÚNG TỪ GOOGLE SHEET
+  fetch('https://script.google.com/macros/s/AKfycbx7lJCTnsnmlMN2yt1ykalLVWZflsLq6VwsryifCmdnGHXUrsgqxWGWwgbexMnAHwjzsA/exec?action=getAll')
+    .then(res => res.json())
+    .then(data => {
+      const marquee = document.getElementById('marquee-content');
+      if (Array.isArray(data) && data.length > 0) {
+        marquee.innerHTML = data.map(row =>
+          `🎉 ${row.name} trúng ${row.prize}`
+        ).join('&nbsp;&nbsp;&nbsp;&nbsp;');
+      } else {
+        marquee.textContent = "Chưa có ai trúng thưởng.";
+      }
+    })
+    .catch(err => {
+      console.error('Lỗi tải danh sách người trúng:', err);
+      document.getElementById('marquee-content').textContent = "Không thể tải danh sách người trúng.";
+    });
       </script>
   </section>
 
