@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ALEYNA WEDDING</title>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F90BW8CMZY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-F90BW8CMZY');
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-F90BW8CMZY');
   </script>
-  <!-- SEO Cơ bản -->
-  <meta name="description"
-    content="Aleyna Wedding chuyên cho thuê áo dài bê tráp, áo dài đồng phục lễ ăn hỏi cưới. Chất lượng - đúng hẹn - giá tốt. Hotline: 0389 446 132">
+
+  <!-- SEO cơ bản -->
+  <meta name="description" content="Aleyna Wedding chuyên cho thuê áo dài bê tráp, áo dài đồng phục lễ ăn hỏi cưới. Chất lượng - đúng hẹn - giá tốt. Hotline: 0389 446 132">
   <meta name="keywords" content="áo dài bê tráp, thuê áo dài cưới, thuê nhân sự bê quả, áo dài ăn hỏi, aleyna wedding">
   <meta name="author" content="Aleyna Wedding">
   <meta name="robots" content="index, follow">
@@ -25,16 +23,14 @@
   <!-- Mạng xã hội -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Aleyna Wedding - Thuê áo dài bê tráp đẹp, chỉn chu">
-  <meta property="og:description"
-    content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
+  <meta property="og:description" content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
   <meta property="og:image" content="https://aleynawedding.store/anh1.jpg">
   <meta property="og:url" content="https://aleynawedding.store/">
   <meta property="og:site_name" content="Aleyna Wedding">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aleyna Wedding - Thuê áo dài bê tráp đẹp, chỉn chu">
-  <meta name="twitter:description"
-    content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
+  <meta name="twitter:description" content="Dịch vụ cho thuê áo dài bê tráp giá tốt tại Tân Phú. Gọi ngay 0389 446 132 để tư vấn.">
   <meta name="twitter:image" content="https://aleynawedding.store/anh1.jpg">
 
   <!-- Favicon -->
@@ -42,400 +38,130 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Aleyna Wedding",
-  "description": "Cho thuê áo dài bê tráp và nhân sự cưới hỏi tại Tân Phú",
-  "url": "https://aleynawedding.store",
-  "telephone": "0389446132",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Đường D11, P. Tây Thạnh",
-    "addressLocality": "Tân Phú",
-    "addressRegion": "HCM",
-    "postalCode": "700000",
-    "addressCountry": "VN"
-  }
-}
-</script>
+
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-  <!-- CSS nội bộ -->
+  <!-- CSS -->
   <style>
-    html,
-    body {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+    :root {
+      /* ✅ Cấu hình kích thước vòng quay (chỉnh tại đây nếu muốn) */
+      --wheel-size: 400px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Playfair Display', serif;
-      background-color: black;
-      color: white;
-      scroll-behavior: smooth;
-    }
+    html, body { scroll-behavior: smooth; overflow-x: hidden; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Playfair Display', serif; background:#000; color:#fff; }
 
     .hero {
-      height: 100vh;
-      background: url('anh1.jpg') no-repeat center center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      transition: background-image 1s ease-in-out;
+      height: 100vh; background: url('anh1.jpg') no-repeat center/cover;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      text-align:center; padding:20px; transition: background-image 1s ease-in-out;
+    }
+    .hero h1 { font-size:4em; letter-spacing:5px; text-transform:uppercase;
+      text-shadow:2px 2px 6px rgba(0,0,0,.6); animation:fadeInText 2s ease-out forwards; opacity:0; }
+    .hero button { margin-top:20px; padding:12px 30px; font-size:1em; background:rgba(255,255,255,.1);
+      border:1px solid #fff; color:#fff; cursor:pointer; backdrop-filter:blur(3px); transition:.3s; }
+    .hero button:hover { background:#fff; color:#000; }
+
+    section { padding:80px 20px; text-align:center; }
+    .section-dark, .wheels { background:#111; }
+    h2 { font-size:2.5em; margin-bottom:20px; }
+    p { max-width:700px; margin:0 auto; font-size:1.2em; line-height:1.6; color:#ccc; }
+
+    .btn-contact { margin-top:40px; padding:14px 40px; font-size:1.1em; border:none; background:#fff; color:#000; cursor:pointer; transition:.3s; }
+    .btn-contact:hover { background:#f0c5d6; color:#000; }
+
+    /* Nút gọi / Facebook */
+    .call-now, .fb-now {
+      position: fixed; right:20px; z-index:1000; border-radius:40px; font-weight:bold; text-decoration:none;
+      box-shadow:0 4px 10px rgba(0,0,0,.3); padding:12px 20px;
+    }
+    .call-now { bottom:20px; background:#f0c5d6; color:#000; }
+    .fb-now { bottom:70px; background:#4267B2; color:#fff; }
+
+    @keyframes fadeInText { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+    @media (max-width:768px){
+      .hero h1{ font-size:2.5em; letter-spacing:2px; }
+      .hero button{ padding:10px 20px; font-size:.9em; }
+      h2{ font-size:1.8em; }
+      p{ font-size:1em; padding:0 10px; }
+      section{ padding:50px 10px; }
+      .btn-contact{ padding:12px 28px; font-size:1em; }
+      :root{ --wheel-size: 320px; }
     }
 
-    .hero h1 {
-      font-size: 4em;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-      animation: fadeInText 2s ease-out forwards;
-      opacity: 0;
-    }
-
-    .hero button {
-      margin-top: 20px;
-      padding: 12px 30px;
-      font-size: 1em;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid white;
-      color: white;
-      cursor: pointer;
-      backdrop-filter: blur(3px);
-      transition: all 0.3s ease;
-    }
-
-    .hero button:hover {
-      background-color: white;
-      color: black;
-    }
-
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .section-dark {
-      background-color: #111;
-    }
-
-    .wheels {
-      background-color: #111;
-    }
-
-    h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.2em;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .btn-contact {
-      margin-top: 40px;
-      padding: 14px 40px;
-      font-size: 1.1em;
-      border: none;
-      background-color: white;
-      color: black;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-contact:hover {
-      background-color: #f0c5d6;
-      color: black;
-    }
-
-    /* Nút gọi điện nhanh */
-    .call-now {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #f0c5d6;
-      padding: 12px 20px;
-      color: black;
-      border-radius: 40px;
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    @keyframes fadeInText {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5em;
-        letter-spacing: 2px;
-      }
-
-      .hero button {
-        padding: 10px 20px;
-        font-size: 0.9em;
-      }
-
-      h2 {
-        font-size: 1.8em;
-      }
-
-      p {
-        font-size: 1em;
-        padding: 0 10px;
-      }
-
-      section {
-        padding: 50px 10px;
-      }
-
-      .btn-contact {
-        padding: 12px 28px;
-        font-size: 1em;
-      }
-    }
-
-    .segment {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
-      transform-origin: 50% 50%;
-      z-index: 1;
-      border-right: 1px solid rgba(255, 215, 0, 0.4);
-      /* viền chia lát nhẹ */
-    }
-
-    .segment-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform-origin: 0 0;
-      white-space: nowrap;
-      font-size: 14px;
-      font-weight: bold;
-      text-align: center;
-      width: 140px;
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
-      z-index: 2;
-    }
-
-    /* Phân loại màu cho giải thưởng */
-    .voucher {
-      color: #1e88e5;
-    }
-
-    .no-win {
-      color: #999;
-      font-style: italic;
-    }
-
-    .big-prize {
-      color: #e91e63;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .special-prize {
-      color: #d4af37;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background-color: #000000;
-      padding: 20px 30px;
-      border-radius: 10px;
-      text-align: center;
-      min-width: 250px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      font-size: 18px;
-    }
-
-    .spinner {
-      border: 4px solid #eee;
-      border-top: 4px solid #3498db;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 10px;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .modal.show {
-      display: flex;
-    }
-
-    .modal button {
-      margin-top: 15px;
-      padding: 6px 16px;
-      border: none;
-      background: #3498db;
-      color: #fff;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
+    /* ===== Vòng quay ===== */
     .wheel-heading {
-      font-size: 40px;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 20px;
+      font-size: 40px; font-weight: 800; text-align:center; margin-bottom:20px;
       font-family: 'Playfair Display', serif;
       background: linear-gradient(90deg, #f0c5d6, #e91e63, #f0c5d6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 2s ease-in-out infinite;
-      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite; text-shadow: 2px 2px 4px rgba(255,255,255,0.2);
     }
-
     @keyframes glow {
-      0% {
-        text-shadow: 0 0 5px #ff69b4, 0 0 10px #f6abd3;
-      }
-
-      50% {
-        text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493;
-      }
-
-      100% {
-        text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493;
-      }
+      0%{ text-shadow:0 0 5px #ff69b4, 0 0 10px #f6abd3; }
+      50%{ text-shadow:0 0 15px #ff69b4, 0 0 25px #ff1493; }
+      100%{ text-shadow:0 0 5px #ff69b4, 0 0 10px #ff1493; }
     }
-
     .glow-text {
       background: linear-gradient(90deg, #f7f4f5, #f9c6d7, #f9f9f9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-      animation: glow 0.4s ease-in-out infinite;
-      font-size: 20px;
-      /* ← tăng kích thước tại đây */
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:bold; animation: glow .4s ease-in-out infinite;
+      font-size:20px;
     }
-    .fb-now {
-  position: fixed;
-  bottom: 70px; /* cao hơn nút gọi điện một chút */
-  right: 20px;
-  background: #4267B2; /* màu Facebook */
-  padding: 12px 20px;
-  color: white;
-  border-radius: 40px;
-  font-weight: bold;
-  text-decoration: none;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-.winner-marquee {
-  width: 100%;
-  overflow: hidden;
-  background: #000;
-  color: #fff;
-  padding: 10px 0;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
-  margin-top: 30px;
-  font-size: 16px;
-  font-family: 'Playfair Display', serif;
-}
 
-.marquee-content {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll-left 25s linear infinite;
-  padding-left: 100%;
-}
+    .winner-marquee {
+      width:100%; overflow:hidden; background:#000; color:#fff; padding:10px 0;
+      border-top:1px solid #333; border-bottom:1px solid #333; margin-top:30px; font-size:16px;
+    }
+    .marquee-content { display:inline-block; white-space:nowrap; animation:scroll-left 25s linear infinite; padding-left:100%; }
+    @keyframes scroll-left { 0%{transform:translateX(0%);} 100%{transform:translateX(-100%);} }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
+    /* Modal */
+    .modal{ display:none; position:fixed; z-index:9999; inset:0; background:rgba(0,0,0,.6); justify-content:center; align-items:center; }
+    .modal.show{ display:flex; }
+    .modal-content{ background:#000; padding:20px 30px; border-radius:10px; text-align:center; min-width:250px; box-shadow:0 4px 10px rgba(0,0,0,.2); font-size:18px; }
+    .spinner{ border:4px solid #eee; border-top:4px solid #3498db; border-radius:50%; width:36px; height:36px; animation:spin 1s linear infinite; margin:0 auto 10px; }
+    @keyframes spin{ 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
+    .modal button{ margin-top:15px; padding:6px 16px; border:none; background:#3498db; color:#fff; border-radius:6px; cursor:pointer; }
 
-  100% {
-    transform: translateX(-100%);
-  }
-}
+    /* Hình học bánh xe */
+    #wheel-wrapper { position:relative; width: var(--wheel-size); height: calc(var(--wheel-size) + 30px); margin: 0 auto; }
+    #pointer {
+      position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:0; height:0; border-left:20px solid transparent; border-right:20px solid transparent; border-top:30px solid red; z-index:10;
+    }
+    #lucky-wheel {
+      position:relative; width:var(--wheel-size); height:var(--wheel-size);
+      border-radius:50%; border:10px solid #333; overflow:hidden; transition: transform 4s ease-out; pointer-events:none; margin: 30px auto 0;
+    }
+    .slice {
+      position:absolute; width:100%; height:100%; transform-origin:center;
+      clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 50% 50%);
+    }
+    .label {
+      position:absolute; inset:0; display:flex; align-items:flex-start; justify-content:center;
+      font-size:14px; color:#fff; text-align:center; transform-origin:center;
+    }
+    .label span { position:absolute; top:20px; }
+
   </style>
 </head>
-
 <body>
 
   <!-- Hero -->
   <div class="hero" id="hero">
     <h1>ALEYNA WEDDING</h1>
-    <button aria-label="Xem tiếp"
-      onclick="document.getElementById('section-moment').scrollIntoView({ behavior: 'smooth' });">XEM TIẾP</button>
+    <button aria-label="Xem tiếp" onclick="document.getElementById('section-moment').scrollIntoView({behavior:'smooth'});">XEM TIẾP</button>
     <button onclick="scrollToWheel()">VÒNG QUAY ALEYNA</button>
   </div>
-  <script>
-    function scrollToWheel() {
-      const wheel = document.querySelector(".wheels"); // chọn theo class
-      if (wheel) {
-        wheel.scrollIntoView({ behavior: "smooth" });
-      } else {
-        console.error("Không tìm thấy phần tử có class='wheels'");
-      }
-    }
-  </script>
 
   <!-- Khoảnh khắc -->
   <section class="section-dark" id="section-moment">
     <h2>DÀNH CHO KHOẢNH KHẮC TRỌNG ĐẠI</h2>
-    <p>
-      Aleyna Wedding đồng hành cùng bạn lưu giữ dấu ấn đẹp nhất trong ngày trọng đại. Chúng tôi tin rằng những chi tiết
-      nhỏ — từ trang phục đến sự chuẩn bị — chính là điều tạo nên những khoảnh khắc không thể nào quên.
-    </p>
+    <p>Aleyna Wedding đồng hành cùng bạn lưu giữ dấu ấn đẹp nhất trong ngày trọng đại. Chúng tôi tin rằng những chi tiết nhỏ — từ trang phục đến sự chuẩn bị — chính là điều tạo nên những khoảnh khắc không thể nào quên.</p>
   </section>
 
   <!-- Dịch vụ -->
@@ -443,311 +169,210 @@
     <h2>DỊCH VỤ ÁO DÀI BÊ TRÁP</h2>
     <p>
       🎀 <strong>Áo dài bưng quả:</strong> chỉ từ <strong>90.000đ/bộ</strong> (đã bao gồm phụ kiện)<br><br>
-      🎀 <strong>Nhân sự bê quả:</strong> chỉ từ <strong>1xx.000đ/bạn</strong> (bao gồm áo dài, makeup, di
-      chuyển)<br><br>
-      Aleyna Wedding chuyên cung cấp dịch vụ <strong>cho thuê áo dài đồng phục bê tráp</strong> cho lễ ăn hỏi, lễ cưới.
-      Với nhiều mẫu mã thanh lịch – hiện đại, đội hình bê quả của bạn sẽ nổi bật và đồng bộ.<br><br>
-      <strong>Sạch sẽ – chỉn chu – đúng hẹn</strong> là cam kết của chúng tôi trong từng đơn hàng.<br><br>
-      📩 Inbox ngay cho <strong>#aleynawedding</strong> để được tư vấn & hỗ trợ kịp thời<br>
+      🎀 <strong>Nhân sự bê quả:</strong> chỉ từ <strong>1xx.000đ/bạn</strong> (bao gồm áo dài, makeup, di chuyển)<br><br>
+      Aleyna Wedding chuyên cung cấp dịch vụ <strong>cho thuê áo dài đồng phục bê tráp</strong> cho lễ ăn hỏi, lễ cưới.<br><br>
+      <strong>Sạch sẽ – chỉn chu – đúng hẹn</strong> là cam kết của chúng tôi.<br><br>
+      📩 Inbox ngay cho <strong>#aleynawedding</strong><br>
       📍 Địa chỉ: Đường D11, P. Tây Thạnh, Q. Tân Phú<br>
-      📞 Hotline: <strong>0389 446 132 (Zalo)</strong><br>
-      (Vui lòng gọi trước 30 phút khi đến để shop chuẩn bị chu đáo)
+      📞 Hotline: <strong>0389 446 132 (Zalo)</strong>
     </p>
-    <button class="btn-contact"
-      onclick="window.location.href='https://www.facebook.com/profile.php?id=61577575435565'">LIÊN HỆ NGAY</button>
+    <button class="btn-contact" onclick="window.location.href='https://www.facebook.com/profile.php?id=61577575435565'">LIÊN HỆ NGAY</button>
   </section>
 
-  <!-- Nút gọi điện nhanh -->
+  <!-- Nút gọi nhanh & FB -->
   <a href="tel:0389446132" class="call-now">📞 Gọi ngay</a>
-  <a href="https://www.facebook.com/aleynawedding" class="fb-now" target="_blank" rel="noopener noreferrer">
-  💬Facebook
-  </a>
+  <a href="https://www.facebook.com/aleynawedding" class="fb-now" target="_blank" rel="noopener noreferrer">💬Facebook</a>
 
-  <!-- JavaScript -->
+  <!-- Vòng quay -->
+  <section class="wheels" id="wheel-section">
+    <div id="spin-app" style="display:flex; flex-direction:column; align-items:center; margin:50px 0; position:relative;">
+      <h2 class="wheel-heading">✨Vòng Quay Aleyna, quay là có quà✨</h2>
+
+      <!-- Form -->
+      <form id="user-form" style="width:90%; max-width:400px; margin-bottom:70px;">
+        <input type="text" id="name" placeholder="Họ & tên" required style="width:100%; padding:8px; margin-bottom:10px;"/>
+        <input type="tel" id="phone" placeholder="Số điện thoại" required style="width:100%; padding:8px; margin-bottom:10px;"/>
+        <button type="submit" style="width:100%; padding:10px; background:#333; color:#fff; border:none; border-radius:4px; cursor:pointer;">Bắt đầu quay</button>
+      </form>
+
+      <!-- Bánh xe -->
+      <div id="wheel-wrapper">
+        <div id="pointer"></div>
+
+        <div id="lucky-wheel">
+          <!-- 8 lát cắt -->
+          <div class="slice" style="background:#ff69b4; transform:rotate(0deg);"></div>
+          <div class="slice" style="background:#ff1493; transform:rotate(45deg);"></div>
+          <div class="slice" style="background:#ff69b4; transform:rotate(90deg);"></div>
+          <div class="slice" style="background:#ff1493; transform:rotate(135deg);"></div>
+          <div class="slice" style="background:#ff69b4; transform:rotate(180deg);"></div>
+          <div class="slice" style="background:#ff1493; transform:rotate(225deg);"></div>
+          <div class="slice" style="background:#ff69b4; transform:rotate(270deg);"></div>
+          <div class="slice" style="background:#ff1493; transform:rotate(315deg);"></div>
+
+          <!-- Nhãn -->
+          <div class="label" style="transform: rotate(22.5deg);"><span class="glow-text" style="transform: rotate(-22.5deg);">-5%</span></div>
+          <div class="label" style="transform: rotate(67.5deg);"><span class="glow-text" style="transform: rotate(-67.5deg);">50K</span></div>
+          <div class="label" style="transform: rotate(112.5deg);"><span class="glow-text" style="transform: rotate(-112.5deg);">100k</span></div>
+          <div class="label" style="transform: rotate(157.5deg);"><span class="glow-text" style="transform: rotate(-157.5deg);">-10%</span></div>
+          <div class="label" style="transform: rotate(202.5deg);"><span class="glow-text" style="transform: rotate(-202.5deg);">Socola</span></div>
+          <div class="label" style="transform: rotate(247.5deg);"><span class="glow-text" style="transform: rotate(-247.5deg); top:30px; position:absolute;">12 Bao lì xì</span></div>
+          <div class="label" style="transform: rotate(292.5deg);"><span class="glow-text" style="transform: rotate(-292.5deg); top:30px; position:absolute;">Áo thun</span></div>
+          <div class="label" style="transform: rotate(337.5deg);"><span class="glow-text" style="transform: rotate(-337.5deg);">Gift</span></div>
+        </div>
+      </div>
+
+      <!-- Điều khiển -->
+      <button id="spin-btn" style="margin-top:20px; padding:10px 20px; font-size:16px; background:#333; color:#fff; border:none; border-radius:5px; cursor:not-allowed;" disabled>Quay</button>
+      <div id="spin-result" style="margin-top:20px; font-size:18px; font-weight:bold;"></div>
+
+      <!-- Danh sách trúng -->
+      <div class="winner-marquee"><div class="marquee-content" id="marquee-content">⏳ Đang tải danh sách người trúng...</div></div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal"><div class="modal-content" id="modal-content"></div></div>
+
+  <!-- Footer -->
+  <footer style="width:100%; background:#333; color:#fff; padding:30px 20px; margin-top:60px; text-align:center; font-size:14px;">
+    <div style="max-width:800px; margin:0 auto;">
+      <p style="font-size:16px; font-weight:bold; margin-bottom:10px;">Aleyna Wedding</p>
+      <p>Địa chỉ: 35 Đường D11, Phường Tây Thạnh, TP. Hồ Chí Minh</p>
+      <p>Hotline: <a href="tel:0389446132" style="color:#ffcc00; text-decoration:none;">0389446132</a> | Zalo: <a href="https://zalo.me/0389446132" style="color:#ffcc00; text-decoration:none;">0389446132</a></p>
+      <p>Email: <a href="mailto:Aleynawedding@gmail.com" style="color:#ffcc00; text-decoration:none;">Aleynawedding@gmail.com</a></p>
+      <p style="margin-top:20px; font-size:13px; color:#bbb;">© 2025 Aleyna Wedding. Bản quyền đã được bảo hộ.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
   <script>
+    /* ======= Cấu hình nhanh ======= */
+    const prizes = ['-5%', '50K', '100k', '-10%', 'Socola', '12 Bao lì xì', 'Áo thun', 'Gift'];
+    // Trọng số tỉ lệ trúng theo cùng thứ tự với prizes (số lớn = dễ trúng hơn)
+    const weights = [30, 20, 15, 15, 8, 7, 3, 2]; // chỉnh tùy ý
+    const SPIN_ROUNDS = 8;     // số vòng quay trước khi dừng
+    const SPIN_DURATION = 6;   // thời gian quay (giây)
+    const APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbx7lJCTnsnmlMN2yt1ykalLVWZflsLq6VwsryifCmdnGHXUrsgqxWGWwgbexMnAHwjzsA/exec";
+
+    /* ======= Ảnh hero luân phiên ======= */
     const hero = document.getElementById("hero");
     const images = ["anh1.jpg", "anh2.jpg", "anh3.jpg"];
     let index = 0;
+    images.forEach(src => { const i = new Image(); i.src = src; });
+    setInterval(() => { index = (index + 1) % images.length; hero.style.backgroundImage = `url('${images[index]}')`; }, 5000);
 
-    // Preload ảnh nền
-    images.forEach(img => {
-      const preload = new Image();
-      preload.src = img;
-    });
+    function scrollToWheel(){ document.getElementById('wheel-section').scrollIntoView({behavior:'smooth'}); }
 
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      hero.style.backgroundImage = `url('${images[index]}')`;
-    }, 5000);
-  </script>
+    /* ======= Wheel Logic (weighted) ======= */
+    const form = document.getElementById('user-form');
+    const spinBtn = document.getElementById('spin-btn');
+    const wheel = document.getElementById('lucky-wheel');
+    const result = document.getElementById('spin-result');
 
-  <section class="wheels">
-    <!-- CONTAINER ĐỂ DÁN VÀO BODY -->
-    <div id="spin-app"
-      style="font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 50px 0; position: relative;">
-      <h2 class="wheel-heading">
-        ✨Vòng Quay Aleyna, quay là có quà✨
-      </h2>
-      <!-- FORM BẮT NGƯỜI DÙNG NHẬP TÊN & SĐT -->
-      <form id="user-form" style="width: 90%; max-width: 400px; margin-bottom: 70px;">
-        <input type="text" id="name" placeholder="Họ & tên" required
-          style="width: 100%; padding: 8px; margin-bottom: 10px;" />
-        <input type="tel" id="phone" placeholder="Số điện thoại" required
-          style="width: 100%; padding: 8px; margin-bottom: 10px;" />
-        <button type="submit"
-          style="width: 100%; padding: 10px; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-          Bắt đầu quay
-        </button>
-      </form>
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+    function showModal(html){ modalContent.innerHTML = html; modal.classList.add('show'); }
+    function closeModal(){ modal.classList.remove('show'); }
 
+    function pickIndexByWeight(weights){
+      const total = weights.reduce((a,b)=>a+b,0);
+      let r = Math.random() * total;
+      for(let i=0;i<weights.length;i++){ if(r < weights[i]) return i; r -= weights[i]; }
+      return weights.length-1;
+    }
 
-      <div style="position: relative; width: 400px; height: 430px;">
-        <!-- Mũi tên phía trên -->
-        <div style="
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 30px solid red;
-    z-index: 10;
-  "></div>
-        <!-- VÒNG QUAY -->
-        <div id="lucky-wheel"
-          style="position: relative; width: 400px; height: 400px; border-radius: 50%; border: 10px solid #333; overflow: hidden; transition: transform 4s ease-out; pointer-events: none;">
-          <!-- 8 lát cắt -->
-          <div
-            style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-bottom: 30px solid red; z-index: 999;">
-          </div>
-          <div style="background: #ff69b4; transform: rotate(0deg);" class="slice"></div>
-          <div style="background: #ff1493; transform: rotate(45deg);" class="slice"></div>
-          <div style="background: #ff69b4; transform: rotate(90deg);" class="slice"></div>
-          <div style="background: #ff1493; transform: rotate(135deg);" class="slice"></div>
-          <div style="background: #ff69b4; transform: rotate(180deg);" class="slice"></div>
-          <div style="background: #ff1493; transform: rotate(225deg);" class="slice"></div>
-          <div style="background: #ff69b4; transform: rotate(270deg);" class="slice"></div>
-          <div style="background: #ff1493; transform: rotate(315deg);" class="slice"></div>
-          <!-- Nhãn -->
-          <div class="label" style="transform: rotate(22.5deg);">
-            <span class="glow-text" style="transform: rotate(-22.5deg);">-5%</span>
-          </div>
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      result.textContent = '';
+      showModal('<div class="spinner"></div><div>Đang kiểm tra số điện thoại...</div>');
 
-          <div class="label" style="transform: rotate(67.5deg);">
-            <span class="glow-text" style="transform: rotate(-67.5deg);">50K</span>
-          </div>
-
-          <div class="label" style="transform: rotate(112.5deg);">
-            <span class="glow-text" style="transform: rotate(-112.5deg);">100k</span>
-          </div>
-
-          <div class="label" style="transform: rotate(157.5deg);">
-            <span class="glow-text" style="transform: rotate(-157.5deg);">-10%</span>
-          </div>
-
-          <div class="label" style="transform: rotate(202.5deg);">
-            <span class="glow-text" style="transform: rotate(-202.5deg);">Socola</span>
-          </div>
-
-          <div class="label" style="transform: rotate(247.5deg);">
-            <span class="glow-text" style="transform: rotate(-247.5deg);top: 30px; position: absolute;">Bao lì xì</span>
-          </div>
-
-          <div class="label" style="transform: rotate(292.5deg);">
-            <span class="glow-text" style="transform: rotate(-292.5deg);top: 30px; position: absolute;">Áo thun</span>
-          </div>
-
-          <div class="label" style="transform: rotate(337.5deg);">
-            <span class="glow-text" style="transform: rotate(-337.5deg);">Gift</span>
-          </div>
-
-        </div>
-
-        <!-- KẾT QUẢ & NÚT QUAY -->
-        <button id="spin-btn"
-          style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: not-allowed;"
-          disabled>Quay</button>
-        <div id="spin-result" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
-        <!-- Thanh trượt danh sách người trúng -->
-        <div class="winner-marquee">
-          <div class="marquee-content" id="marquee-content">
-            ⏳ Đang tải danh sách người trúng...
-          </div>
-        </div>
-      </div>
-
-      <!-- CSS slices & labels -->
-      <style>
-        .slice {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          transform-origin: center;
-          clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 50% 50%);
-        }
-
-        .label {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          font-size: 14px;
-          color: white;
-          text-align: center;
-          transform-origin: center;
-        }
-
-        .label span {
-          position: absolute;
-          top: 20px;
-        }
-      </style>
-      <div id="modal" class="modal">
-        <div class="modal-content" id="modal-content">
-          <!-- Nội dung động sẽ được chèn bằng JS -->
-        </div>
-      </div>
-      <script>
-        const form = document.getElementById('user-form');
-        const spinBtn = document.getElementById('spin-btn');
-        const wheel = document.getElementById('lucky-wheel');
-        const result = document.getElementById('spin-result');
-        const prizes = ['-5%', '50K', '100k', '-10%', 'Socola', '12 Bao lì xì', 'Áo thun', 'Gift'];
-
-        let user = {};
-
-        form.addEventListener('submit', async e => {
-          e.preventDefault(); // ✅ CHẶN FORM GỬI VÀ TẢI LẠI TRANG
-          result.textContent = '';
-          showModal('<div class="spinner"></div><div>Đang kiểm tra số điện thoại...</div>');
-
-          const name = document.getElementById('name').value.trim();
-
-          const phone = document.getElementById('phone').value.trim();
-          // Kiểm tra định dạng số điện thoại Việt Nam (10 số, bắt đầu từ 03, 05, 07, 08, 09)
-          const phoneRegex = /^(03|05|07|08|09)\d{8}$/;
-          if (!phoneRegex.test(phone)) {
-            showModal('<div>Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng 10 số.</div><button onclick="closeModal()">Đóng</button>');
-            return;
-          }
-          const checkRes = await fetch(`https://script.google.com/macros/s/AKfycbx7lJCTnsnmlMN2yt1ykalLVWZflsLq6VwsryifCmdnGHXUrsgqxWGWwgbexMnAHwjzsA/exec?phone=${encodeURIComponent(phone)}`);
-          const checkData = await checkRes.json();
-
-          if (checkData.status === 'used') {
-            showModal('<div>Số điện thoại này đã tham gia quay thưởng!</div><button onclick="closeModal()">Đóng</button>');
-            return;
-          }
-
-          // Cho phép quay
-          user = { name, phone };
-          form.style.display = 'none';
-          spinBtn.disabled = false;
-          spinBtn.style.cursor = 'pointer';
-          spinBtn.textContent = 'Quay';
-          showModal('<div>Số điện thoại hợp lệ. Bạn có thể bắt đầu quay!</div><button onclick="closeModal()">OK</button>');
-        });
-
-        spinBtn.addEventListener('click', async () => {
-          if (!user || !user.phone || !user.name) {
-            alert("Vui lòng nhập họ tên và số điện thoại trước.");
-            return;
-          }
-
-          spinBtn.disabled = true;
-          spinBtn.style.cursor = 'not-allowed';
-
-          const sliceAngle = 360 / prizes.length;
-          const randomDeg = Math.floor(Math.random() * 360);
-          const rotateDeg = 360 * 5 + randomDeg;
-
-          wheel.style.transform = `rotate(${rotateDeg}deg)`;
-
-          setTimeout(() => {
-            const finalDeg = (rotateDeg % 360 + 360) % 360;
-            const pickedIndex = Math.floor((360 - finalDeg) / sliceAngle) % prizes.length;
-            const prize = prizes[pickedIndex];
-
-
-            // ✅ Thêm hiển thị popup kết quả
-            showModal(`
-    <div style="font-size: 20px; font-weight: bold;">🎉 Chúc mừng! 🎉</div>
-    <div style="margin: 10px 0;">Bạn đã trúng: <span style="color: #e91e63; font-size: 22px;">${prize}</span> <br> (Được áp dụng thông qua số điện thoại khi sử dụng dịch vụ)</div>
-    <button onclick="closeModal()">Đóng</button>
-  `);
-            const params = new URLSearchParams({
-              name: user.name,
-              phone: user.phone,
-              prize: prize,
-              time: new Date().toLocaleString('vi-VN')
-            });
-
-            fetch("https://script.google.com/macros/s/AKfycbx7lJCTnsnmlMN2yt1ykalLVWZflsLq6VwsryifCmdnGHXUrsgqxWGWwgbexMnAHwjzsA/exec?" + params.toString())
-              .then(res => res.json())
-              .then(data => {
-                console.log('Đã gửi dữ liệu lên Google Sheet:', data);
-                spinBtn.textContent = 'Đã quay';
-              })
-              .catch(err => {
-                console.error('Lỗi gửi kết quả:', err);
-                result.textContent = '❗ Có lỗi khi lưu kết quả.';
-              });
-
-          }, 4000);
-        });
-        const modal = document.getElementById('modal');
-        const modalContent = document.getElementById('modal-content');
-
-        function showModal(html, autoClose = false, delay = 2000) {
-          modalContent.innerHTML = html;
-          modal.classList.add('show');
-          if (autoClose) {
-            setTimeout(() => {
-              modal.classList.remove('show');
-            }, delay);
-          }
-        }
-
-        function closeModal() {
-          modal.classList.remove('show');
-        }
-         // TẢI DANH SÁCH NGƯỜI TRÚNG TỪ GOOGLE SHEET
-  fetch('https://script.google.com/macros/s/AKfycbx7lJCTnsnmlMN2yt1ykalLVWZflsLq6VwsryifCmdnGHXUrsgqxWGWwgbexMnAHwjzsA/exec?action=getAll')
-    .then(res => res.json())
-    .then(data => {
-      const marquee = document.getElementById('marquee-content');
-      if (Array.isArray(data) && data.length > 0) {
-        marquee.innerHTML = data.map(row =>
-          `🎉 ${row.name} trúng ${row.prize}`
-        ).join('&nbsp;&nbsp;&nbsp;&nbsp;');
-      } else {
-        marquee.textContent = "Chưa có ai trúng thưởng.";
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const phoneRegex = /^(03|05|07|08|09)\d{8}$/;
+      if(!phoneRegex.test(phone)){
+        showModal('<div>Số điện thoại không hợp lệ. Vui lòng nhập đúng 10 số.</div><button onclick="closeModal()">Đóng</button>');
+        return;
       }
-    })
-    .catch(err => {
-      console.error('Lỗi tải danh sách người trúng:', err);
-      document.getElementById('marquee-content').textContent = "Không thể tải danh sách người trúng.";
+
+      try{
+        const checkRes = await fetch(`${APPS_SCRIPT}?phone=${encodeURIComponent(phone)}`);
+        const checkData = await checkRes.json();
+        if(checkData.status === 'used'){
+          showModal('<div>Số điện thoại này đã tham gia quay thưởng!</div><button onclick="closeModal()">Đóng</button>');
+          return;
+        }
+      }catch(err){
+        console.error(err);
+        showModal('<div>Không kiểm tra được số điện thoại. Vui lòng thử lại.</div><button onclick="closeModal()">Đóng</button>');
+        return;
+      }
+
+      // Cho phép quay
+      window.currentUser = { name, phone };
+      form.style.display = 'none';
+      spinBtn.disabled = false; spinBtn.style.cursor = 'pointer';
+      spinBtn.textContent = 'Quay';
+      showModal('<div>Số điện thoại hợp lệ. Bạn có thể bắt đầu quay!</div><button onclick="closeModal()">OK</button>');
     });
-      </script>
-  </section>
 
+    spinBtn.addEventListener('click', async () => {
+      if(!window.currentUser){ alert("Vui lòng nhập họ tên và số điện thoại trước."); return; }
+      spinBtn.disabled = true; spinBtn.style.cursor = 'not-allowed';
+
+      const sliceAngle = 360 / prizes.length;
+
+      // 1) chọn giải theo trọng số
+      const chosenIndex = pickIndexByWeight(weights);
+      const chosenPrize = prizes[chosenIndex];
+
+      // 2) tính góc kết thúc để kim chỉ đúng lát
+      // công thức ngược với cách tính pickedIndex ban đầu
+      const offsetWithinSlice = Math.random() * (sliceAngle - 0.001);
+      const endAtDeg = 360 - (chosenIndex * sliceAngle + offsetWithinSlice);
+
+      // 3) áp dụng hiệu ứng quay
+      wheel.style.transition = `transform ${SPIN_DURATION}s ease-out`;
+      const rotateDeg = 360 * SPIN_ROUNDS + endAtDeg;
+      wheel.style.transform = `rotate(${rotateDeg}deg)`;
+
+      setTimeout(() => {
+        showModal(`
+          <div style="font-size:20px; font-weight:bold;">🎉 Chúc mừng! 🎉</div>
+          <div style="margin:10px 0;">
+            Bạn đã trúng: <span style="color:#e91e63; font-size:22px;">${chosenPrize}</span>
+            <br>(Áp dụng qua số điện thoại khi dùng dịch vụ)
+          </div>
+          <button onclick="closeModal()">Đóng</button>
+        `);
+
+        const params = new URLSearchParams({
+          name: window.currentUser.name,
+          phone: window.currentUser.phone,
+          prize: chosenPrize,
+          time: new Date().toLocaleString('vi-VN')
+        });
+
+        fetch(`${APPS_SCRIPT}?${params.toString()}`)
+          .then(res => res.json())
+          .then(() => { spinBtn.textContent = 'Đã quay'; })
+          .catch(err => { console.error('Lỗi gửi kết quả:', err); result.textContent = '❗ Có lỗi khi lưu kết quả.'; });
+      }, SPIN_DURATION * 1000);
+    });
+
+    // Tải danh sách người trúng
+    fetch(`${APPS_SCRIPT}?action=getAll`)
+      .then(res => res.json())
+      .then(data => {
+        const marquee = document.getElementById('marquee-content');
+        if (Array.isArray(data) && data.length > 0) {
+          marquee.innerHTML = data.map(row => `🎉 ${row.name} trúng ${row.prize}`).join('&nbsp;&nbsp;&nbsp;&nbsp;');
+        } else { marquee.textContent = "Chưa có ai trúng thưởng."; }
+      })
+      .catch(err => {
+        console.error('Lỗi tải danh sách người trúng:', err);
+        document.getElementById('marquee-content').textContent = "Không thể tải danh sách người trúng.";
+      });
+  </script>
 </body>
-<footer
-  style="width: 100%; background-color: #333; color: #fff; padding: 30px 20px; margin-top: 60px; text-align: center; font-size: 14px;">
-  <div style="max-width: 800px; margin: 0 auto;">
-    <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">Aleyna Wedding</p>
-    <p>Địa chỉ: 35 Đường D11, Phường Tây Thạnh, TP. Hồ Chí Minh</p>
-    <p>Hotline: <a href="tel:0389446132" style="color: #ffcc00; text-decoration: none;">0389446132</a> | Zalo: <a
-        href="https://zalo.me/0389446132" style="color: #ffcc00; text-decoration: none;">0389446132</a></p>
-    <p>Email: <a href="mailto:Aleynawedding@gmail.com" style="color: #ffcc00; text-decoration: none;">Aleynawedding@gmail.com</a>
-    </p>
-    <p style="margin-top: 20px; font-size: 13px; color: #bbb;">© 2025 Aleyna Wedding. Bản quyền đã được bảo hộ.</p>
-  </div>
-</footer>
-
 </html>
