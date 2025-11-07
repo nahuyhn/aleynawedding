@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Aleyna Wedding Chat</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f8e1ec, #fff);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      background: #fff;
+    }
+
+    .chat-header {
+      background: #d63384;
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    .message {
+      margin: 8px 0;
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      line-height: 1.4;
+      font-size: 15px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    .bot {
+      background: #e5e5ea;
+      align-self: flex-start;
+      color: #000;
+      border-top-left-radius: 0;
+    }
+
+    .user {
+      background: #d63384;
+      align-self: flex-end;
+      color: white;
+      border-top-right-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #eee;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      background: #f1f1f1;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .chat-input button {
+      background: #d63384;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      margin-left: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .chat-input button:hover {
+      background: #b52d70;
+    }
+
+    @media (max-width: 600px) {
+      .chat-header {
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      .message {
+        font-size: 14px;
+      }
+
+      .chat-input input {
+        font-size: 14px;
+        padding: 9px 12px;
+      }
+
+      .chat-input button {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="chat-header">💬 Aleyna Wedding Chat</div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">
+        Xin chào! 🌸 Mình là trợ lý ảo của <b>Aleyna Wedding</b>.  
+        Mình có thể giúp bạn tư vấn về dịch vụ <b>bưng quả</b>, <b>cho thuê áo dài</b>, hoặc hỗ trợ đặt lịch nhé!
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Nhập tin nhắn..." onkeypress="if(event.key==='Enter') sendMessage()">
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://api.aimlapi.com/v1/chat/completions";
+    const API_KEY = "839085d0f68c42168114f8d3ea6c4ed3";
+
+    const systemPrompt = `
+      Bạn là trợ lý ảo của Aleyna Wedding — dịch vụ cho thuê nhân sự bưng quả và áo dài truyền thống cho ngày cưới tại TP. Hồ Chí Minh và các vùng lân cận.
+      **Thông tin doanh nghiệp:**
+      - Tên: Aleyna Wedding
+      - Khu vực hoạt động: TP.HCM, Bình Dương, Đồng Nai, Long An,...
+      - Liên hệ: Fanpage Facebook https://www.facebook.com/aleynawedding
+      - Hotline & Zalo: 0389446132
+      - Địa chỉ: Đường D11, phường Tây Thạnh, quận Tân Phú, TP.HCM
+      - Giờ hoạt động: luôn có người trực (24/7)
+
+      **Dịch vụ:**
+      - Cho thuê đội bưng quả nam/nữ mặc áo dài truyền thống.
+      - Cho thuê áo dài bưng quả với nhiều màu sắc (đỏ, hồng, vàng, trắng,...).
+      - Mâm quả & Gia Tiên cơ bản.
+      - Dịch vụ xe cưới: 16, 24, 48 chỗ, xe dâu.
+      - Quy trình: Liên hệ trực tiếp → chọn dịch vụ & mẫu → cọc tiền → tới xem trực tiếp hoặc đặt online. 
+        Có hỗ trợ ship tận nơi và quay/chụp mẫu cho khách xem trước.
+      - Giá tham khảo:
+        • Áo dài bưng quả chỉ từ 90k/bộ.
+        • Nhân sự bưng quả chỉ 1xx/bạn.
+        • Freeship đơn thuê áo từ 1 triệu đồng.
+
+      **Phong cách tư vấn:**
+      - Lễ phép, nhẹ nhàng, thân thiện (“dạ”, “ạ”, “mình”, “bạn nhé”).
+      - Không nói giá cụ thể, chỉ nói "giá hợp lý" và mời khách liên hệ.
+      - Khi khách xin link, gửi đúng link Facebook/Zalo.
+      - Cuối cuộc trò chuyện, chúc khách có ngày cưới thật vui và trọn vẹn 💐.
+    `;
+
+    const messages = [
+      { role: "system", content: systemPrompt }
+    ];
+
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chat = document.getElementById("chatMessages");
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage(text, "user");
+      input.value = "";
+      messages.push({ role: "user", content: text });
+
+      appendMessage("Đang trả lời...", "bot", true);
+
+      try {
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${API_KEY}`
+          },
+          body: JSON.stringify({
+            model: "gpt-4o",
+            messages: messages
+          })
+        });
+
+        const data = await response.json();
+        const botReply = data.choices?.[0]?.message?.content || "Xin lỗi, mình chưa hiểu rõ câu hỏi.";
+        chat.removeChild(chat.lastChild);
+        appendMessage(botReply, "bot");
+        messages.push({ role: "assistant", content: botReply });
+      } catch (err) {
+        chat.removeChild(chat.lastChild);
+        appendMessage("Lỗi kết nối: " + err.message, "bot");
+      }
+    }
+
+    function appendMessage(text, sender, isTemp = false) {
+      const chat = document.getElementById("chatMessages");
+      const msg = document.createElement("div");
+      msg.classList.add("message", sender);
+      msg.innerHTML = text;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight;
+      if (isTemp) msg.classList.add("loading");
+    }
+  </script>
+</body>
+</html>
