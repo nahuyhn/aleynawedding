@@ -1,60 +1,415 @@
-<div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="1.jpg" style="width:100%;height:100%;object-fit:cover" />
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QR Generator — Tạo mã QR nhanh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f12;
+      --navy: #04263a;
+      --accent: #0ea5b8;
+      --muted: #9aa7b0;
+      --card: rgba(255, 255, 255, 0.03);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg), var(--navy));
+      color: #e6eef2;
+      padding: 28px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 20px;
+      align-items: start
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 22px
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 8px 40px rgba(2, 6, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.04)
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px
+    }
+
+    input[type="text"],
+    textarea,
+    select,
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: transparent;
+      color: inherit;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical
+    }
+
+    .row {
+      display: flex;
+      gap: 10px
+    }
+
+    .col {
+      flex: 1
+    }
+
+    .small {
+      width: 120px
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    button {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: inherit;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .preview-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.008));
+      min-height: 360px
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .foot {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    @media (max-width:980px) {
+      .wrap {
+        grid-template-columns: 1fr;
+        padding-bottom: 60px
+      }
+
+      .preview-box {
+        min-height: 260px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Tạo mã QR nhanh</h1>
+      <div class="muted">Nhập URL hoặc văn bản vào dưới đây — mã QR được tạo ngay lập tức.</div>
+
+      <div style="margin-top:14px" class="controls">
+        <div>
+          <label for="text">Nội dung (URL / văn bản)</label>
+          <textarea id="text"
+            placeholder="Ví dụ: https://example.com hoặc ghi lời nhắn...">https://example.com</textarea>
         </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="2.jpg" style="width:100%;height:100%;object-fit:cover" />
+
+        <div class="row">
+          <div class="col">
+            <label for="size">Kích thước (px)</label>
+            <input id="size" type="number" min="80" max="1200" value="360" />
+          </div>
+          <div class="col small">
+            <label for="margin">Margin (đơn vị)</label>
+            <input id="margin" type="number" min="0" max="40" value="2" />
+          </div>
         </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="3.jpg" style="width:100%;height:100%;object-fit:cover" />
+
+        <div class="row">
+          <div class="col">
+            <label for="level">Cấp sửa lỗi</label>
+            <select id="level">
+              <option value="L">L — Thấp</option>
+              <option value="M" selected>M — Trung bình</option>
+              <option value="Q">Q — Cao</option>
+              <option value="H">H — Rất cao</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="fg">Màu chính (mã)</label>
+            <input id="fg" type="text" value="#0b2a33" />
+          </div>
         </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="4.jpg" style="width:100%;height:100%;object-fit:cover" />
+
+        <div class="row">
+          <div class="col">
+            <label for="bg">Màu nền (mã)</label>
+            <input id="bg" type="text" value="#ffffff00" />
+            <div class="muted" style="margin-top:6px">Ghi màu dạng #RRGGBB hoặc #RRGGBBAA. Ví dụ #ffffff00 để trong
+              suốt.</div>
+          </div>
+
+          <div class="col small">
+            <label for="format">Định dạng</label>
+            <select id="format">
+              <option value="png" selected>PNG</option>
+              <option value="svg">SVG</option>
+            </select>
+          </div>
         </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="5.jpg" style="width:100%;height:100%;object-fit:cover" />
+
+        <div class="actions">
+          <button id="generateBtn">Tạo QR</button>
+          <button id="downloadBtn">Tải PNG</button>
+          <button id="copyBtn">Sao chép ảnh</button>
+          <button id="resetBtn">Đặt lại</button>
         </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="6.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="7.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="8.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="9.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="10.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="11.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="12.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="13.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="14.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="15.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="16.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="17.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="18.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="19.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
-        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
-          <img src="20.jpg" style="width:100%;height:100%;object-fit:cover" />
-        </div>
+
+        <div class="foot">Gợi ý: tăng cấp sửa lỗi (Q/H) nếu bạn muốn đặt logo lên QR. Màu nền trong suốt giúp đặt QR lên
+          ảnh nền.</div>
+      </div>
+    </div>
+
+    <aside class="card center">
+      <div class="flex-between" style="width:100%;align-items:center">
+        <div style="font-weight:700">Xem trước</div>
+        <div class="muted" id="info">—</div>
+      </div>
+
+      <div class="preview-box" id="previewBox">
+        <!-- canvas/svg will be injected here -->
+        <canvas id="qrCanvas" style="display:block"></canvas>
+      </div>
+
+      <div style="width:100%;margin-top:12px;display:flex;gap:8px;justify-content:center;align-items:center">
+        <button id="zoomIn">Zoom +</button>
+        <button id="zoomOut">Zoom −</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- qrious library (lightweight) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+  <script>
+    // Elements
+    const textEl = document.getElementById('text');
+    const sizeEl = document.getElementById('size');
+    const marginEl = document.getElementById('margin');
+    const levelEl = document.getElementById('level');
+    const fgEl = document.getElementById('fg');
+    const bgEl = document.getElementById('bg');
+    const formatEl = document.getElementById('format');
+    const generateBtn = document.getElementById('generateBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const infoEl = document.getElementById('info');
+    const previewBox = document.getElementById('previewBox');
+    const qrCanvas = document.getElementById('qrCanvas');
+    const zoomIn = document.getElementById('zoomIn');
+    const zoomOut = document.getElementById('zoomOut');
+
+    // QRious instance
+    let qr = new QRious({
+      element: qrCanvas,
+      size: parseInt(sizeEl.value, 10),
+      value: textEl.value,
+      background: '#ffffff00', // default transparent
+      foreground: '#0b2a33',
+      level: 'M'
+    });
+
+    // utility: validate non-empty
+    function currentSettings() {
+      return {
+        text: textEl.value.trim(),
+        size: Math.max(80, Math.min(1200, parseInt(sizeEl.value) || 360)),
+        margin: Math.max(0, Math.min(40, parseInt(marginEl.value) || 2)),
+        level: levelEl.value,
+        fg: fgEl.value || '#0b2a33',
+        bg: bgEl.value || '#ffffff00',
+        format: formatEl.value
+      };
+    }
+
+    function render() {
+      const s = currentSettings();
+      if (!s.text) {
+        infoEl.textContent = 'Nhập nội dung để tạo QR';
+        previewBox.querySelectorAll('svg, img').forEach(n => n.remove());
+        qr.canvas.style.display = 'none';
+        return;
+      }
+      qr.set({
+        value: s.text,
+        size: s.size,
+        background: s.bg,
+        foreground: s.fg,
+        level: s.level
+      });
+      // Show info
+      infoEl.textContent = `Kích ${s.size}px · lỗi ${s.level}`;
+      // ensure canvas visible
+      qr.canvas.style.display = 'block';
+      // If SVG requested, produce SVG and replace canvas with img/svg
+      if (s.format === 'svg') {
+        // Convert canvas to dataURL and embed in <img> (SVG generation from QRious not built-in)
+        // As fallback, show PNG but mark format; advanced SVG requires other libs.
+        // We'll generate PNG but set filename with .svg if user chooses svg (warning shown)
+        // (Note: QRious doesn't generate SVG — for real SVG you'd use another lib.)
+      }
+    }
+
+    // initial render
+    render();
+
+    // actions
+    generateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      render();
+    });
+
+    sizeEl.addEventListener('change', render);
+    marginEl.addEventListener('change', render);
+    levelEl.addEventListener('change', render);
+    fgEl.addEventListener('change', render);
+    bgEl.addEventListener('change', render);
+    textEl.addEventListener('input', () => { infoEl.textContent = '...'; render(); });
+
+    // download PNG
+    downloadBtn.addEventListener('click', async () => {
+      const s = currentSettings();
+      if (!s.text) { alert('Vui lòng nhập nội dung trước.'); return; }
+      // create an offscreen canvas to include margin
+      const marginPx = s.margin;
+      const finalSize = s.size + marginPx * 2;
+      const out = document.createElement('canvas');
+      out.width = finalSize;
+      out.height = finalSize;
+      const ctx = out.getContext('2d');
+      // fill background
+      if (s.bg && s.bg !== '#ffffff00') {
+        ctx.fillStyle = s.bg;
+        ctx.fillRect(0, 0, finalSize, finalSize);
+      } else {
+        // leave transparent
+      }
+      // draw existing QR canvas centered
+      ctx.drawImage(qr.canvas, marginPx, marginPx, s.size, s.size);
+      // download
+      out.toBlob((blob) => {
+        const a = document.createElement('a');
+        const filename = `qr_${Date.now()}.png`;
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }, 'image/png');
+    });
+
+    // copy image to clipboard (if supported)
+    copyBtn.addEventListener('click', async () => {
+      const s = currentSettings();
+      if (!s.text) { alert('Vui lòng nhập nội dung trước.'); return; }
+      try {
+        const blob = await new Promise(resolve => qr.canvas.toBlob(resolve, 'image/png'));
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        alert('Đã sao chép mã QR vào clipboard (ảnh). Bạn có thể dán vào chat hoặc tài liệu.');
+      } catch (err) {
+        console.error(err);
+        alert('Không thể sao chép ảnh lên clipboard. Trình duyệt có thể không hỗ trợ API này.');
+      }
+    });
+
+    // reset
+    resetBtn.addEventListener('click', () => {
+      textEl.value = 'https://example.com';
+      sizeEl.value = 360;
+      marginEl.value = 2;
+      levelEl.value = 'M';
+      fgEl.value = '#0b2a33';
+      bgEl.value = '#ffffff00';
+      formatEl.value = 'png';
+      render();
+    });
+
+    // zoom controls (scale canvas visually)
+    let zoom = 1;
+    function applyZoom() {
+      qr.canvas.style.transform = `scale(${zoom})`;
+      qr.canvas.style.transformOrigin = 'center center';
+    }
+    zoomIn.addEventListener('click', () => { zoom = Math.min(2, +(zoom + 0.1).toFixed(2)); applyZoom(); });
+    zoomOut.addEventListener('click', () => { zoom = Math.max(0.5, +(zoom - 0.1).toFixed(2)); applyZoom(); });
+
+    // convenience: auto generate on load
+    window.addEventListener('load', () => { render(); });
+  </script>
+</body>
+
+</html>
