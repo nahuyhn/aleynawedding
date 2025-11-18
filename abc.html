@@ -1,202 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>English Vocabulary Flashcards - Education</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f4f8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    h1 {
-      color: #333;
-      text-align: center;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 320px;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      margin-top: 2rem;
-      cursor: pointer;
-      transition: 0.3s;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .buttons {
-      margin-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    #prevBtn, #nextBtn {
-      background: #007bff;
-      color: white;
-    }
-
-    #prevBtn:hover, #nextBtn:hover {
-      background: #0056b3;
-    }
-
-    #speakButton {
-      background: #28a745;
-      color: white;
-    }
-
-    #speakButton:hover {
-      background: #218838;
-    }
-
-    @media only screen and (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
-
-      .card {
-        width: 100%;
-        max-width: none;
-        height: auto;
-        min-height: 180px;
-        font-size: 1rem;
-        padding: 1rem;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-        text-align: center;
-        margin-bottom: 1rem;
-      }
-
-      .buttons {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
-      }
-
-      .buttons button {
-        width: 90%;
-        font-size: 1rem;
-        padding: 0.75rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>Education Vocabulary Flashcards</h1>
-  <div class="card" id="flashcard">Click to show meaning</div>
-
-  <div class="buttons">
-    <button id="prevBtn" onclick="prevCard()">Previous</button>
-    <button id="nextBtn" onclick="nextCard()">Next</button>
-    <button id="speakButton">🔊 Pronounce</button>
-  </div>
-
-  <script>
-    const vocabulary = [
-      { word: "Enrolment (n)", meaning: "Sự ghi danh" },
-      { word: "Attendance (n)", meaning: "Sự có mặt" },
-      { word: "Lecture hall (n)", meaning: "Giảng đường" },
-      { word: "Dean (n)", meaning: "Trưởng khoa" },
-      { word: "Principal (n)", meaning: "Hiệu trưởng" },
-      { word: "Headmaster / Headmistress (n)", meaning: "Thầy / Cô hiệu trưởng" },
-      { word: "Pedagogy (n)", meaning: "Phương pháp giảng dạy" },
-      { word: "Mentor (n)", meaning: "Người hướng dẫn" },
-      { word: "Internship (n)", meaning: "Kỳ thực tập" },
-      { word: "Gap year (n)", meaning: "Năm nghỉ để trải nghiệm" },
-      { word: "Module (n)", meaning: "Học phần" },
-      { word: "Seminar (n)", meaning: "Buổi hội thảo" },
-      { word: "Plagiarism (n)", meaning: "Đạo văn" },
-      { word: "Commencement (n)", meaning: "Lễ tốt nghiệp" },
-      { word: "Faculty (n)", meaning: "Khoa / Giảng viên" },
-      { word: "Alumnus / Alumna (n)", meaning: "Cựu sinh viên" },
-      { word: "Prospectus (n)", meaning: "Tài liệu giới thiệu khóa học" },
-      { word: "MOOC (n)", meaning: "Khóa học đại trà trực tuyến" },
-      { word: "Learning outcome (n)", meaning: "Kết quả học tập" },
-      { word: "Standardized test (n)", meaning: "Bài kiểm tra chuẩn hóa" },
-      { word: "Credential (n)", meaning: "Chứng chỉ" },
-      { word: "Grant (n)", meaning: "Trợ cấp" },
-      { word: "Tenure (n)", meaning: "Biên chế giảng viên" },
-      { word: "Coeducation (n)", meaning: "Giáo dục đồng giới" },
-      { word: "Remedial class (n)", meaning: "Lớp học phụ đạo" },
-      { word: "Honor roll (n)", meaning: "Danh sách học sinh xuất sắc" },
-      { word: "Elective (n)", meaning: "Môn học tự chọn" },
-      { word: "Valedictorian (n)", meaning: "Thủ khoa phát biểu tốt nghiệp" },
-      { word: "School counselor (n)", meaning: "Cố vấn học đường" },
-      { word: "Learning disability (n)", meaning: "Khó khăn học tập" }
-    ];
-
-    let currentIndex = 0;
-    let showingWord = true;
-    const flashcard = document.getElementById("flashcard");
-
-    function showCard() {
-      const entry = vocabulary[currentIndex];
-      flashcard.textContent = showingWord ? entry.word : entry.meaning;
-    }
-
-    flashcard.addEventListener("click", () => {
-      showingWord = !showingWord;
-      showCard();
-    });
-
-    function nextCard() {
-      if (currentIndex < vocabulary.length - 1) {
-        currentIndex++;
-        showingWord = true;
-        showCard();
-      }
-    }
-
-    function prevCard() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        showingWord = true;
-        showCard();
-      }
-    }
-
-    function speak(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "en-US"; // Đảm bảo đọc giọng tiếng Anh chuẩn
-      speechSynthesis.speak(utterance);
-    }
-
-    document.getElementById("speakButton").addEventListener("click", () => {
-      const entry = vocabulary[currentIndex];
-      const wordToSpeak = entry.word.replace(/\(.*?\)/g, "").trim();
-      speak(wordToSpeak);
-    });
-
-    showCard();
-  </script>
-</body>
-</html>
+<div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="1.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="2.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="3.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="4.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="5.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="6.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="7.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="8.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="9.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="10.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="11.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="12.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="13.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="14.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="15.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="16.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="17.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="18.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="19.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div style="width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.05)">
+          <img src="20.jpg" style="width:100%;height:100%;object-fit:cover" />
+        </div>
